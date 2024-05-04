@@ -1,103 +1,71 @@
-.head{
-    background-color: #fff;
-    border:1px solid hsla(0, 0%, 0%, 0.295);
-    margin: 10px;
-    width: 98.6%;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
 }
-*{
-    font-size: 18px;
-}
-.form{
-    background-color: #fff;
-    border:1px solid hsla(0, 0%, 0%, 0.295);
-    color: black;
-    /* font-size: 20px; */
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 15px;
-    padding-right: 10vw;
-    margin-top: 40px;
-    /* width: 96.5%; */
-    height: 90vh;
-    margin: 10px;
-    box-sizing: border-box;
-    width: 96.5vw;
-}
-label{
-    padding-left: 8vw;
-    padding-right: 5vw;
-}
-h1{
+
+.head {
     margin-top: 20px;
-    margin-left: 25px;
-    font-size: 38px;  
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.first input{
-    height: 30px;
-    width: 60vw;
-    /* font-size: 20px; */
-    color: black;
-    float: right;
-    /* margin-right: 130px; */
-    
+.form {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.last input{
-    height: 30px;
-    width: 60vw;
-    /* font-size: 20px; */
-    color: black;
-    float: right;
-    margin-right: 0vw;
-   
+.form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
-.last select{
-    width: 20vw;
-    height: 30px;
-    /* font-size: 20px; */
-    margin-right: 40vw;
-    float: right;
-    
-}
-.mobile label{
-    width: 40vw;
+.form input[type="text"],
+.form input[type="number"],
+.form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     box-sizing: border-box;
 }
-.mobile input{
-    width: 20vw;
-    display: inline;
-    height: 30px;
-    float: right;
-    /* font-size: 20px; */
-    margin-right: 40vw;
-}
-.mobile span{
-    font-size: 13px;
-    float: right;
-    margin-right: 6vw;
-    /* padding-left: 8vw */
+
+.form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.last textarea {
-    font-size: 20px;
-    float: right;
-    width: 60vw;
-    margin-right: 0vw;
+.form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
-.last .date
-{
-    width: 20vw;
-    float: right;
-    margin-right: 40vw;
+
+.form input[type="submit"]:hover {
+    background-color: #0056b3;
 }
-.ok input {
-    text-align: center;
-    height: 35px;
-    width: 120px;
-    font-size: 18px;
-    color: #ffffff;
-    background-color: #021649;
-    float: right;
-    margin-right: 0vw;
+
+.error {
+    border-color: lightcoral;
+    background-color: rgba(240, 128, 128, 0.377);
+}
+
+.success {
+    border-color: rgb(128, 240, 147);
+    background-color: rgba(43, 226, 68, 0.377);
 }

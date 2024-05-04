@@ -1,0 +1,103 @@
+.head{
+    background-color: #fff;
+    border:1px solid hsla(0, 0%, 0%, 0.295);
+    margin: 10px;
+    width: 98.6%;
+}
+*{
+    font-size: 18px;
+}
+.form{
+    background-color: #fff;
+    border:1px solid hsla(0, 0%, 0%, 0.295);
+    color: black;
+    /* font-size: 20px; */
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px;
+    padding-right: 10vw;
+    margin-top: 40px;
+    /* width: 96.5%; */
+    height: 90vh;
+    margin: 10px;
+    box-sizing: border-box;
+    width: 96.5vw;
+}
+label{
+    padding-left: 8vw;
+    padding-right: 5vw;
+}
+h1{
+    margin-top: 20px;
+    margin-left: 25px;
+    font-size: 38px;  
+}
+
+.first input{
+    height: 30px;
+    width: 60vw;
+    /* font-size: 20px; */
+    color: black;
+    float: right;
+    /* margin-right: 130px; */
+    
+}
+
+.last input{
+    height: 30px;
+    width: 60vw;
+    /* font-size: 20px; */
+    color: black;
+    float: right;
+    margin-right: 0vw;
+   
+}
+
+.last select{
+    width: 20vw;
+    height: 30px;
+    /* font-size: 20px; */
+    margin-right: 40vw;
+    float: right;
+    
+}
+.mobile label{
+    width: 40vw;
+    box-sizing: border-box;
+}
+.mobile input{
+    width: 20vw;
+    display: inline;
+    height: 30px;
+    float: right;
+    /* font-size: 20px; */
+    margin-right: 40vw;
+}
+.mobile span{
+    font-size: 13px;
+    float: right;
+    margin-right: 6vw;
+    /* padding-left: 8vw */
+}
+
+.last textarea {
+    font-size: 20px;
+    float: right;
+    width: 60vw;
+    margin-right: 0vw;
+}
+.last .date
+{
+    width: 20vw;
+    float: right;
+    margin-right: 40vw;
+}
+.ok input {
+    text-align: center;
+    height: 35px;
+    width: 120px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #021649;
+    float: right;
+    margin-right: 0vw;
+}

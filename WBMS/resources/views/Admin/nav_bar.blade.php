@@ -20,7 +20,7 @@
                 </ul>
             <li><a href="#sub-nav1" target="content_frame"><i class="material-icons">badge</i>Agent</a></li>
                 <ul class="sub-nav1" id="sub-nav1">
-                    <li><a href="http://">Agent Registration</a></li>
+                    <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'agt_reg') }}')">Agent Registration</a></li>
                     <li><a href="http://">Agent List</a></li>
                     <li><a href="http://">Agent Profile</a></li>
                 </ul>
