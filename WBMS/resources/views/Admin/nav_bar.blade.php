@@ -15,20 +15,20 @@
             <li><a href="#sub-nav4" target="content_frame"><i class="material-icons">groups</i>Customers</a></li>
                 <ul class="sub-nav4" id="sub-nav4">
                     <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'cus_reg') }}')">Customer Registration</a></li>
-                    <li><a href="http://">Customer List</a></li>
+                    <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'cus_list') }}')">Customer List</a></li>
                     <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'cus_profile') }}')">Customer Profile</a></li>
                 </ul>
             <li><a href="#sub-nav1" target="content_frame"><i class="material-icons">badge</i>Agent</a></li>
                 <ul class="sub-nav1" id="sub-nav1">
                     <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'agt_reg') }}')">Agent Registration</a></li>
-                    <li><a href="http://">Agent List</a></li>
+                    <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'agt_list') }}')">Agent List</a></li>
                     <li><a href="http://">Agent Profile</a></li>
                 </ul>
 
             <li><a href="#sub-nav2" target="content_frame"><i class="material-icons">payments</i>Payments</a></li>
                 <ul class="sub-nav2" id="sub-nav2">
-                    <li><a href="http://">Make Payment</a></li>
-                    <li><a href="http://">Payment List</a></li>
+                    <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'payment_1') }}')">Make Payment</a></li>
+                    <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'pay_list') }}')">Payment List</a></li>
                     <li><a href="http://">Payment Slips</a></li>
                 </ul>
                 <li><a href="#sub-nav3" target="content_frame"><i class="material-icons">currency_exchange</i>Reload</a></li>

@@ -399,3 +399,84 @@ table{
 }
 
 
+#cus-id{
+    width: 10vw;
+}
+#cus-name{
+    width: 20vw;
+}
+#cus-nic{
+    width: 10vw;
+}
+#cus-phone{
+    width: 10vw;
+}
+#cus-reg-date{
+    width: 10vw;
+}
+#cus-address{
+    width: 15vw;
+}#cus-balance{
+    width: 10vw;
+}
+#cus-status{
+    width: 10vw;
+}
+#cus-edit{
+    width: 5vw;
+}
+
+#agt-id{
+    width: 10vw;
+}
+#agt-name{
+    width: 20vw;
+}
+#agt-nic{
+    width: 10vw;
+}
+#agt-phone{
+    width: 10vw;
+}
+#agt-reg-date{
+    width: 10vw;
+}
+#agt-address{
+    width: 15vw;
+}#agt-balance{
+    width: 10vw;
+}
+#agt-status{
+    width: 10vw;
+}
+#agt-edit{
+    width: 5vw;
+}
+
+
+
+#trans-id {
+    width: 10vw;
+}
+#trans-customer-name {
+    width: 20vw;
+}
+#trans-nic {
+    width: 10vw;
+}
+#trans-account {
+    width: 15vw;
+}
+#trans-date {
+    width: 10vw;
+}
+
+#trans-time {
+    width: 10vw;
+}
+#trans-agent {
+    width: 15vw;
+}
+#trans-amount {
+    width: 10vw;
+}

@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('CSS/Admin.css')}}">
-    <title>Customer List</title>
+    <title>Agent List</title>
 </head>
 <body>
     <div class="sub-topic-bar">
         <ul>
-            <li><span class="sub-topic">Customers</span></li>
+            <li><span class="sub-topic">Agents</span></li>
             <li>
                 <label for="sortingOptions">Sort By:</label>
                 <select id="sortingOptions" name="sortingOptions" placeholder="Sort By">
@@ -21,7 +21,7 @@
             </li>
             <li>
                 <div class="wtf">
-                    <input type="text" id="customerSearch" placeholder="Search by name">
+                    <input type="text" id="agentSearch" placeholder="Search by name">
                     <img src="Source/search-icon.png" alt="search-btn" class="Btn-search">
                 </div>
             </li>
@@ -42,28 +42,28 @@
     <div class="table">
         <table>
             <tr>
-                <th id="cus-id">Customer ID</th>
-                <th id="cus-name">Name</th>
-                <th id="cus-nic">NIC</th>
-                <th id="cus-phone">Phone</th>
-                <th id="cus-reg-date">Registered Date</th>
-                <th id="cus-address">Address</th>
-                <th id="cus-balance">Balance</th>
-                <th id="cus-status">Status</th>
-                <th id="cus-edit">Edit</th> <!-- New Edit column -->
+                <th id="agt-id">Agent ID</th>
+                <th id="agt-name">Name</th>
+                <th id="agt-nic">NIC</th>
+                <th id="agt-phone">Phone</th>
+                <th id="agt-reg-date">Registered Date</th>
+                <th id="agt-address">Address</th>
+                <th id="agt-balance">Balance</th>
+                <th id="agt-status">Status</th>
+                <th id="agt-edit">Edit</th> <!-- New Edit column -->
             </tr>
             <tr>
-                <td id="cus-id-data">C001</td>
-                <td id="cus-name-data">John Doe</td>
-                <td id="cus-nic-data">123456789X</td>
-                <td id="cus-phone-data">123-456-7890</td>
-                <td id="cus-reg-date-data">2023-10-15</td>
-                <td id="cus-address-data">123 Main St, City</td>
-                <td id="cus-balance-data">$500.00</td>
-                <td id="cus-status-data">Active</td>
-                <td id="cus-edit-data"><a href="edit_customer.html"><img src="Source/edit-icon.png" alt="Edit" class="Btn-edit"></a></td>
+                <td id="agt-id-data">A001</td>
+                <td id="agt-name-data">John Doe</td>
+                <td id="agt-nic-data">123456789X</td>
+                <td id="agt-phone-data">123-456-7890</td>
+                <td id="agt-reg-date-data">2023-10-15</td>
+                <td id="agt-address-data">123 Main St, City</td>
+                <td id="agt-balance-data">$500.00</td>
+                <td id="agt-status-data">Active</td>
+                <td id="agt-edit-data"><a href="edit_agent.html"><img src="Source/edit-icon.png" alt="Edit" class="Btn-edit"></a></td>
             </tr>
-            <!-- Additional customer rows go here -->
+            <!-- Additional agent rows go here -->
         </table>
     </div>
 </body>
