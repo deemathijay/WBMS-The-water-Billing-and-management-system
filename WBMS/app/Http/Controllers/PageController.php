@@ -15,6 +15,8 @@ class PageController extends Controller
                 return view('Admin.pages.default');
             case 'agt_reg':
                 return view('Admin.pages.agt_reg');
+            case 'cus_profile':
+                return view('Admin.pages.cus_profile');   
             default:
                 return abort(404); // Page not found
         }

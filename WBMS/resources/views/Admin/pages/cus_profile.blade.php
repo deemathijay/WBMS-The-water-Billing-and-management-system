@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Admin.css">
+    <link rel="stylesheet" href="{{asset('CSS/Admin.css')}}">
     <title>Document</title>
 <body>
     <div class="profile-topbar">
@@ -25,7 +25,7 @@
         </div>
         <div class="sub3">
             <ul>
-                <li ><img src="Source/print-icon.png" alt="print-icon" class="Btn-print" /></li>
+                <li ><img src="./Source/print-icon.png" alt="print-icon" class="Btn-print" /></li>
                 <li class="wtf"><span class="text-Btn-Active">Active</span><img src="Source/edit-icon.png" alt="print-icon" class="Btn-edit"></li>
                 <li ><span class="rs-tag">Rs.</span><span class="balance">5348.89</span></li>
             </ul>
@@ -174,7 +174,7 @@
                 <td id="trans-amount-data">12,090.00</td>
                 <td id="trans-balance-data">2,989.00</td>
             </tr>
-            
+
             
             <!-- should add js code for change color according to remark value whether its Bill or payment -->
         </table>
