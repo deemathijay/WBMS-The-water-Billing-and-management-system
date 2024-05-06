@@ -75,11 +75,11 @@
                 </tr>
                 <tr>
                     <th>NIC Number:</th>
-                    <td>ABC123456</td>
+                    <td>{{$customer->Cus_NIC}}</td>
                 </tr>
                 <tr>
                     <th>Birthdate:</th>
-                    <td>01/01/1990</td>
+                    <td>{{$customer->Cus_DOB}}</td>
                 </tr>
                 <tr>
                     <th>Account Number:</th>
@@ -95,24 +95,29 @@
                     <th>Amount</th>
                 </tr>
                 <tr>
+                    <td>New Connection Charges</td>
+                    <td>{{$RegFee->RegFee_Amount}}</td>
+                </tr>
+                <tr>
                     <td>Registration Fee</td>
-                    <td>$50.00</td>
+                    <td>{{$RegFee->RegFee_RegFee}}</td>
                 </tr>
                 <tr>
                     <td>Government Tax</td>
-                    <td>$5.00</td>
+                    <td>{{$RegFee->RegFee_GovTax}}</td>
                 </tr>
                 <tr>
                     <td>Handling Charges</td>
-                    <td>$5.00</td>
+                    <td>{{$RegFee->RegFee_Handling}}</td>
                 </tr>
                 <tr>
                     <td>Other Charges</td>
-                    <td>$10.00</td>
+                    <td>{{$RegFee->RegFee_Other}}</td>
                 </tr>
+                
                 <tr class="total-row">
                     <td>Total</td>
-                    <td>$65.00</td>
+                    <td>{{$RegFee->RegFee_Total}}</td>
                 </tr>
             </table>
         </div>
