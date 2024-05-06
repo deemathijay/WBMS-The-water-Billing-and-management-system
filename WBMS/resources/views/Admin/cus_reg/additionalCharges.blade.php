@@ -44,7 +44,8 @@
 <body>
     <div class="container">
         <h1>Add Additional Charges</h1>
-        <form id="additionalChargesForm">
+        <form id="additionalChargesForm" action="{{ route('Cus_RegAdditionalCharges') }}" method="POST">
+            @csrf
             <label for="registrationFee">Registration Fee:</label>
             <input type="text" id="registrationFee" name="registrationFee">
 
@@ -72,7 +73,12 @@
 
             var totalCharges = registrationFee + governmentTax + handlingCharges + otherCharges;
 
-            alert('Total Charges: $' + totalCharges.toFixed(2));
+            var confirmation = confirm('Total Charges: $' + totalCharges.toFixed(2) + '. Are you sure you want to submit?');
+            
+            if (confirmation) {
+                
+                this.submit(); 
+            }
         });
     </script>
 </body>

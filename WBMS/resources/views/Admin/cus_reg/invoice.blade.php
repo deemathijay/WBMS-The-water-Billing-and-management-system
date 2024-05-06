@@ -59,19 +59,19 @@
             <table>
                 <tr>
                     <th>Customer ID:</th>
-                    <td>123456</td>
+                    <td>{{$customer->Cus_id}}</td>
                 </tr>
                 <tr>
                     <th>Name:</th>
-                    <td>John Doe</td>
+                    <td>{{$customer->Cus_NameInitials}}</td>
                 </tr>
                 <tr>
                     <th>Address:</th>
-                    <td>123 Main Street, Cityville</td>
+                    <td>{{$customer->Cus_Address}}</td>
                 </tr>
                 <tr>
                     <th>Telephone:</th>
-                    <td>123-456-7890</td>
+                    <td>{{$customer->Cus_Phone1}}</td>
                 </tr>
                 <tr>
                     <th>NIC Number:</th>
@@ -103,7 +103,11 @@
                     <td>$5.00</td>
                 </tr>
                 <tr>
-                    <td>New Connection Charges</td>
+                    <td>Handling Charges</td>
+                    <td>$5.00</td>
+                </tr>
+                <tr>
+                    <td>Other Charges</td>
                     <td>$10.00</td>
                 </tr>
                 <tr class="total-row">

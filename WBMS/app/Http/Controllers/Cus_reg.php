@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\CusIdGenerator;
+use App\Models\reg_fee;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Session;
@@ -31,6 +32,43 @@ class Cus_reg extends Controller
         $customer->Org_id = $Org_id;
         $customer->save();
 
-        return view('Admin.pages.cus_reg_payment');
+        if($customer){
+            $cus_id=$customer->id;
+            Session::put('cus_id', $cus_id);
+            return view('Admin.cus_reg.cus_reg_payment');
+        }
+        //error handling should come
     }
+
+    public function payment(Request $request){
+        $amount= $request->input('Reg_Fee');
+        Session::put('amount',$amount);
+        return view('Admin.cus_reg.additionalCharges');
+    }
+
+    public function AdditionalCharges(Request $request){
+        if(Session::get('amount')){
+            $amount=Session::get('amount');
+        }else{
+            $amount = 0;
+        }
+
+        $total=$amount+$request->input('registrationFee')+$request->input('governmentTax')+$request->input('handlingCharges')+$request->input('otherCharges');
+        $RegFee = new reg_fee();
+        $RegFee->RegFee_Amount=$amount;
+        $RegFee->RegFee_RegFee=$request->input('registrationFee');
+        $RegFee->RegFee_GovTax=$request->input('governmentTax');
+        $RegFee->RegFee_Handling=$request->input('handlingCharges');
+        $RegFee->RegFee_Other=$request->input('otherCharges');
+        $RegFee->RegFee_Total=$total;
+        $RegFee->CusAcc_id=2;
+        $RegFee->save();
+
+        $customerId=Session::get('cus_id');
+        $customer = Customer::findOrFail($customerId);
+        
+        return view('Admin.cus_reg.invoice',compact('customer','RegFee'));
+    
+    }
+   
 }

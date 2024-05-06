@@ -24,6 +24,7 @@ Route::get('/',[welcome::class,'welcome']);
 Route::post('/validate',[OrgLoginValidation::class,'Validation'])->name('Validate1');
 Route::get('/pages/{pageName}', [PageController::class,'show'])->name('page');
 Route::post('/customer_registration',[Cus_reg::class,'register'])->name('Cus_reg');
-
+Route::post('/payments',[Cus_reg::class,'payment'])->name('Cus_RegOneTimePay');
+Route::post('/payment',[Cus_reg::class,'AdditionalCharges'])->name('Cus_RegAdditionalCharges');
 Route::post('/Agent_registration',[Agt_reg::class,'register'])->name('Agt_reg');
 // Route::post('/LoginValidation',[LoginValidation::class,'Validate1'])->name('Validate1');

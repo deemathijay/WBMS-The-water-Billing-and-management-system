@@ -109,7 +109,7 @@
             //     }
             // });
 
-            function validateForm() {
+        function validateForm() {
         const form = document.forms['form'];
         const inputs = form.querySelectorAll('input, select, textarea');
 

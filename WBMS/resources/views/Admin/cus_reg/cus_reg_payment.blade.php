@@ -53,7 +53,7 @@ span {
 #Intallment-form {
     display: none; /* Hide the installment form initially */
 }
-input[type="button"] {
+input[type="submit"] {
     padding: 8px 12px;
     background-color: #007bff;
     color: #fff;
@@ -85,7 +85,7 @@ input[type="button"]:hover {
     input[type="number"] {
         padding: 6px;
     }
-    input[type="button"] {
+    input[type="submit"] {
         padding: 6px 10px;
     }
 }
@@ -102,7 +102,7 @@ input[type="button"]:hover {
     input[type="number"] {
         padding: 4px;
     }
-    input[type="button"] {
+    input[type="submit"] {
         padding: 4px 8px;
     }
 }
@@ -110,12 +110,14 @@ input[type="button"]:hover {
 <body>
     <div class="form-div">
         <span class="topic">Payment</span>
-        <form id="paymentForm" action="" method="get">
+        <form id="paymentForm" action="{{route('Cus_RegOneTimePay')}}" method="post" onsubmit="return proceedToPay()">
+
+            {{ csrf_field() }}
             <label for="Amount">Enter Total Amount :</label>
             <input type="text" name="Reg_Fee" id="Reg_Fee"><br>
             <label for="method">Choose Payment Method</label><br>
             <input type="radio" name="Payment_method" value="One-Time" id="One-Time" onchange="toggleButton()"> <span>Pay One Time</span><br>
-            <input type="button" value="proceed to Pay" id="One-Time-Btn" onclick="proceedToPay()" style="display: none;"> 
+            <input type="submit" value="proceed to Pay" id="One-Time-Btn" onclick="proceedToPay()" style="display: none;"> 
             <input type="radio" name="Payment_method" value="Installment" id="Installment" onchange="toggleForms()"> <span>Settle Installment</span><br>
         </form>
         <form action="" id="Installment-form" style="display: none;"> 
@@ -125,7 +127,7 @@ input[type="button"]:hover {
             <input type="number" name="Interest" id="Interest" value="0" ><br>
             <label for=""> Amount For a premium</label> 
             <span id="premium_value"></span>
-            <input type="button" value="Settle Installment" id="Setup-instmnt">
+            <input type="submit" value="Settle Installment" id="Setup-instmnt">
         </form>
     </div>
     <script>
@@ -155,7 +157,7 @@ input[type="button"]:hover {
 
         function proceedToPay() {
             // proceed with payment
-            alert('Proceeding to pay...');
+            return true;
         }
         function calculatePremium() {
             var amountField = document.getElementById('Reg_Fee');
