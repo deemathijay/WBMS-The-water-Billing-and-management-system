@@ -9,7 +9,7 @@
 <body>
     <div class="sub-topic-bar">
         <ul>
-            <li><span class="sub-topic">Customers</span></li>
+            <li><span class="sub-topic">Customer's Accounts List</span></li>
             <li>
                 <label for="sortingOptions">Sort By:</label>
                 <select id="sortingOptions" name="sortingOptions" placeholder="Sort By">
@@ -22,7 +22,7 @@
             <li>
                 <div class="wtf">
                     <input type="text" id="customerSearch" placeholder="Search by name">
-                    <img src="Source/search-icon.png" alt="search-btn" class="Btn-search">
+                    <button type="submit" class="Btn-search">Search</button> <!-- Replace with a suitable button -->
                 </div>
             </li>
             <li>
@@ -35,14 +35,14 @@
                 </select>
             </li>
             <li>
-                <img src="Source/print-icon.png" alt="print-icon" srcset="" class="Btn-print">
+                <button type="button" class="Btn-print">Print</button> <!-- Replace with a suitable button -->
             </li>
         </ul>
     </div>
     <div class="table">
         <table>
             <tr>
-                <th id="cus-id">Customer ID</th>
+                <th id="cus-id">Account No</th>
                 <th id="cus-name">Name</th>
                 <th id="cus-nic">NIC</th>
                 <th id="cus-phone">Phone</th>
@@ -52,7 +52,7 @@
                 <th id="cus-status">Status</th>
                 <th id="cus-edit">Edit</th> <!-- New Edit column -->
             </tr>
-            <tr>
+            {{-- <tr>
                 <td id="cus-id-data">C001</td>
                 <td id="cus-name-data">John Doe</td>
                 <td id="cus-nic-data">123456789X</td>
@@ -61,8 +61,23 @@
                 <td id="cus-address-data">123 Main St, City</td>
                 <td id="cus-balance-data">$500.00</td>
                 <td id="cus-status-data">Active</td>
-                <td id="cus-edit-data"><a href="edit_customer.html"><img src="Source/edit-icon.png" alt="Edit" class="Btn-edit"></a></td>
-            </tr>
+                <td id="cus-edit-data"><a href="edit_customer.html" class="Btn-edit">Edit</a></td> <!-- Change to a button class -->
+            </tr> --}}
+            @foreach($customers as $customer)
+                @foreach($customer->cusAccounts as $account)
+                    <tr>
+                        <td>{{ $account->CusAcc_No }}</td>
+                        <td>{{ $customer->Cus_NameInitials }}</td>
+                        <td>{{ $customer->Cus_NIC }}</td>
+                        <td>{{ $customer->Cus_Phone1 }}</td>
+                        <td>{{ $account->created_at }}</td>
+                        <td>{{ $customer->Cus_Address }}</td>
+                        <td>{{ $account->CusAcc_Balance }}</td>
+                        <td>{{ $account->CusAcc_Status }}</td>
+                        <td><a href="#" class="Btn-edit">Edit</a></td>
+                    </tr>
+                @endforeach
+            @endforeach
             <!-- Additional customer rows go here -->
         </table>
     </div>

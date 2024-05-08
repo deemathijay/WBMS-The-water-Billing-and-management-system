@@ -23,6 +23,8 @@ class PageController extends Controller
                 return view('Admin.pages.pay_list');
             case 'cus_profile':
                 return view('Admin.pages.cus_profile');   
+            case 'addNewAcc':
+                return view('Admin.pages.addNewAcc'); 
             default:
                 return abort(404); // Page not found
         }

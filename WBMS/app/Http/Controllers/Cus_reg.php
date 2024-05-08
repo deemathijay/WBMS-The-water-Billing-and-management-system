@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\CusIdGenerator;
+use App\Models\Cus_account;
+use App\Models\Cus_Installment;
 use App\Models\reg_fee;
 use Illuminate\Http\Request;
 use App\Models\Customer;
@@ -32,9 +34,22 @@ class Cus_reg extends Controller
         $customer->Org_id = $Org_id;
         $customer->save();
 
+
+        //generate accnomber for first registration
+
+        $CusAcc = new Cus_account();
+        $CusAcc->CusAcc_No = CusIdGenerator::FirstAccount($customer->Cus_id);
+        $CusAcc->CusAcc_Balance = 0;
+        $CusAcc->CusAcc_Status = "Active" ;
+        $CusAcc->CusAcc_InstallmentStatus = "No" ;
+        $CusAcc->CusAcc_Remark = "No";
+        $CusAcc->Cus_id = $customer->id;
+
+        $CusAcc->save();
+
         if($customer){
-            $cus_id=$customer->id;
-            Session::put('cus_id', $cus_id);
+            $CusAcc_id=$CusAcc->id;
+            Session::put('CusAcc_id', $CusAcc_id);
             return view('Admin.cus_reg.cus_reg_payment');
         }
         //error handling should come
@@ -45,6 +60,18 @@ class Cus_reg extends Controller
         Session::put('amount',$amount);
         return view('Admin.cus_reg.additionalCharges');
     }
+
+    public function Installment(Request $request){
+        $install = new Cus_Installment();
+        $install->Ins_Premium_amount=$request->input('premiumAmount');
+        $install->Ins_NoOfPremium=$request->input('No_Installments');
+        $install->Ins_NoOfRemain=$request->input('No_Installments');
+        $install->CusAcc_id=Session::get('CusAcc_id');
+        $install->save();
+        Session::put('amount',0);
+        return view('Admin.cus_reg.additionalCharges');
+    }
+
 
     public function AdditionalCharges(Request $request){
         if(Session::get('amount')){
@@ -61,14 +88,25 @@ class Cus_reg extends Controller
         $RegFee->RegFee_Handling=$request->input('handlingCharges');
         $RegFee->RegFee_Other=$request->input('otherCharges');
         $RegFee->RegFee_Total=$total;
-        $RegFee->CusAcc_id=2;
+        $RegFee->CusAcc_id=Session::get('CusAcc_id');
         $RegFee->save();
 
+        $cusAccNo= Session::get('CusAcc_id');
         $customerId=Session::get('cus_id');
         $customer = Customer::findOrFail($customerId);
+        $CusAccid = Cus_account::findOrFail($cusAccNo);
         
-        return view('Admin.cus_reg.invoice',compact('customer','RegFee'));
+        return view('Admin.cus_reg.invoice',compact('customer','RegFee','CusAccid'));
     
     }
+
+    public function customerList()
+    {
+        $customers = Customer::with('cusAccounts')->get();
+
+        return view('Admin.pages.cus_list', compact('customers'));
+    }
+
+    
    
 }

@@ -15,8 +15,8 @@
             <li><a href="#sub-nav4" target="content_frame"><i class="material-icons">groups</i>Customers</a></li>
                 <ul class="sub-nav4" id="sub-nav4">
                     <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'cus_reg') }}')">Customer Registration</a></li>
-                    <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'cus_list') }}')">Customer List</a></li>
-                    <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'cus_profile') }}')">Customer Profile</a></li>
+                    <li><a href="javascript:void(0)" onclick="loadContent('{{ route('customerList') }}')">Customer List</a></li>
+                    <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'addNewAcc') }}')">Add New Connection</a></li>
                 </ul>
             <li><a href="#sub-nav1" target="content_frame"><i class="material-icons">badge</i>Agent</a></li>
                 <ul class="sub-nav1" id="sub-nav1">

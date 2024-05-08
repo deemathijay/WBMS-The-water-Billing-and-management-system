@@ -18,8 +18,8 @@ return new class extends Migration
             $table->integer('Ins_Premium_amount');
             $table->integer('Ins_NoOfPremium');
             $table->integer('Ins_NoOfRemain');
-            $table->unsignedBigInteger('Cus_id');
-            $table->foreign('Cus_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->unsignedBigInteger('CusAcc_id');
+            $table->foreign('CusAcc_id')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();
         });
     }

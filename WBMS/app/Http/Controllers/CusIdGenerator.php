@@ -20,6 +20,13 @@ class CusIdGenerator extends Controller
         
         return $Cus_id;
     }
+
+    public static function FirstAccount($Cus_id) {
+        $Acc_id = 'V' . substr_replace($Cus_id, '', 0, 1); 
+        return $Acc_id;
+    }
+    
+
     public static function generateAgtId() {
         $year = date('y');
         $Org_id = Session::get('Org_id');

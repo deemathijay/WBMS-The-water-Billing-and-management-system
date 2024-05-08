@@ -83,7 +83,7 @@
                 </tr>
                 <tr>
                     <th>Account Number:</th>
-                    <td>7890123456</td>
+                    <td>{{$CusAccid->CusAcc_No}}</td>
                 </tr>
             </table>
         </div>

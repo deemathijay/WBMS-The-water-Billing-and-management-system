@@ -146,10 +146,13 @@ input:focus{
 /*button css */
 
 [class^="Btn"]{
-    width: 30px;
+    width: 60px;
     height: 30px;
     border: 1px solid rgba(0, 0, 0, 0.301);
     border-radius: 5px;
+    background-color: #006315;
+    color: #fff;
+    font-weight: 600;
 }
 [class^="text-Btn"]{
     /* height: 30px; */
@@ -166,6 +169,16 @@ input:focus{
     padding: 5px;
     box-sizing: border-box;
     
+}
+.Btn-edit{
+    background-color: #2607af;
+    width: 30px;
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    box-sizing: border-box;
+    padding: 10px;
+    text-decoration: none;
 }
 
 /* sub topic bar ccs begins here */
