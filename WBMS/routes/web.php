@@ -37,7 +37,7 @@ Route::post('/SearchForAddAccount',[AddAccount::class,('search')])->name('search
 Route::get('/Customers-list/{id}',[Cus_reg::class,'editCusProfile'])->name('editCusProfile');
 Route::post('/Edit-Customer-Details/{id}',[Cus_reg::class,'saveProfileChanges'])->name('saveProfileChanges');
 Route::get('/Customers-list/profile/{id}',[Cus_reg::class,'viewCusProfile'])->name('viewCusProfile');
-
+Route::get('/Customers-list/profile/Account/{id}{no}',[Cus_reg::class,'viewCusAcc'])->name('viewCusAcc');
 
 Route::post('/Agent_registration',[Agt_reg::class,'register'])->name('Agt_reg');
 // Route::post('/LoginValidation',[LoginValidation::class,'Validate1'])->name('Validate1');

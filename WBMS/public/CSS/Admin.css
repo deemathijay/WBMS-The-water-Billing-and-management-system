@@ -115,11 +115,12 @@ input:focus{
 }
 
 .profile-topbar .sub3 ul{
-    width: 200px;
+    width: 300px;
 }
 
 .profile-topbar .sub3 ul li{
     float: right;
+    margin-top: 10px;
 }
 .profile-topbar .sub3 ul li:last-child{
     margin-top: 20px;
@@ -128,6 +129,12 @@ input:focus{
 .wtf {
     display: flex;
     align-items: center;
+}
+.wtf .text-Btn-Active{
+    background-color: #006315;
+    /* margin-top: 20px; */
+    padding-bottom: 10px;
+    float: right;
 }
 .profile-topbar .sub3 .text-Btn-Active{
     background-color: #006315;
