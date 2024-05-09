@@ -136,7 +136,7 @@
                     <td>{{$customer->Cus_id}}</td>
                     <td>{{$customer->Cus_NIC}}</td>
                     <td>{{$customer->Cus_Address}}</td>
-                    <td><a href="{{route('AddNewConnection',['customer' => $customer->id])}}">Add</a></td>
+                    <td><a href="{{route('AddNewConnection',['customerId' => $customer->id])}}">Add</a></td>
                 </tr>
             @endforeach  
             </table>

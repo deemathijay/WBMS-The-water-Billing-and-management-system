@@ -42,14 +42,14 @@
     <div class="table">
         <table>
             <tr>
-                <th id="cus-id">Customer ID</th>
-                <th id="cus-name">Name With Initials</th>
+                <th id="cus-id">Account No</th>
+                <th id="cus-name">Name</th>
                 <th id="cus-nic">NIC</th>
-                <th id="cus-phone">Phone NUmber</th>
+                <th id="cus-phone">Phone</th>
                 <th id="cus-reg-date">Registered Date</th>
                 <th id="cus-address">Address</th>
-                <th id="cus-balance">Date Of Birth</th>
-                <th id="cus-status">Remark (if Any)</th>
+                <th id="cus-balance">Balance</th>
+                <th id="cus-status">Status</th>
                 <th id="cus-edit">Edit</th> <!-- New Edit column -->
             </tr>
             {{-- <tr>
@@ -64,19 +64,19 @@
                 <td id="cus-edit-data"><a href="edit_customer.html" class="Btn-edit">Edit</a></td> <!-- Change to a button class -->
             </tr> --}}
             @foreach($customers as $customer)
-                {{-- @foreach($customer->accounts as $account) --}}
+                @foreach($customer->accounts as $account)
                     <tr>
-                        <td><a href="{{route('viewCusProfile',['id'=>$customer->id])}}">{{ $customer->Cus_id }}</a></td>
-                        <td><a href="{{route('viewCusProfile',['id'=>$customer->id])}}">{{ $customer->Cus_NameInitials }}</a></td>
-                        <td><a href="{{route('viewCusProfile',['id'=>$customer->id])}}">{{ $customer->Cus_NIC }}</a></td>
-                        <td><a href="{{route('viewCusProfile',['id'=>$customer->id])}}">{{ $customer->Cus_Phone1 }}</a></td>
-                        <td><a href="{{route('viewCusProfile',['id'=>$customer->id])}}">{{ $customer->created_at }}</a></td>
-                        <td><a href="{{route('viewCusProfile',['id'=>$customer->id])}}">{{ $customer->Cus_Address }}</a></td>
-                        <td><a href="{{route('viewCusProfile',['id'=>$customer->id])}}">{{ $customer->Cus_DOB }}</a></td>
-                        <td><a href="{{route('viewCusProfile',['id'=>$customer->id])}}">{{ $customer->Cus_Remark }}</a></td>
-                        <td><a href="{{route('editCusProfile',['id'=>$customer->id])}}" class="Btn-edit" style="color: aliceblue">Edit</a></td>
+                        <td>{{ $account->CusAcc_No }}</td>
+                        <td>{{ $customer->Cus_NameInitials }}</td>
+                        <td>{{ $customer->Cus_NIC }}</td>
+                        <td>{{ $customer->Cus_Phone1 }}</td>
+                        <td>{{ $account->created_at }}</td>
+                        <td>{{ $customer->Cus_Address }}</td>
+                        <td>{{ $account->CusAcc_Balance }}</td>
+                        <td>{{ $account->CusAcc_Status }}</td>
+                        <td><a href="#" class="Btn-edit">Edit</a></td>
                     </tr>
-                {{-- @endforeach --}}
+                @endforeach
             @endforeach
             <!-- Additional customer rows go here -->
         </table>

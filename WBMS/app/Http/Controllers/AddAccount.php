@@ -13,26 +13,28 @@ class AddAccount extends Controller
     {
         $searchInput = $request->input('searchInput');
 
-        // Perform your search logic here using the $searchInput
+        // Perform search logic here using the $searchInput
         $customers = Customer::where('Cus_id', $searchInput)
                             ->orWhere('Cus_NIC', $searchInput)
                             ->get();
 
         return view('Admin.pages.addNewAcc', compact('customers'));
     }
-
+    //adding a account for existing user to system
     public function addAccount($customerId){
 
-        $customer = Customer::find('$customerId');
-        $oldAccount = Cus_account::where('Cus_id', $customerId)->latest()->first();
-        $oldAccNumber = $oldAccount->CusAcc_no;
-        $lastDigit = substr($oldAccNumber,-1);
+        $customer = Customer::find($customerId);
+        $oldAccount = Cus_account::where('Cus_id', $customer->id)->latest()->first();
 
-        $newDigit = $lastDigit+1;
+        $oldAccNumber = $oldAccount->CusAcc_No;
+        $lastDigit = substr($oldAccNumber, -1);  // Extract the last digit correctly
+        $intVal = intval($lastDigit);  // Convert the last digit to an integer
+        $intVal ++;  // Increment the last digit by 2
+
         $Cus_id = $customer->Cus_id;
+        $Acc_id = 'V' . substr($Cus_id, 1) . $intVal;  // Construct the new account ID
 
-        $Acc_id = 'V' . substr_replace($Cus_id, '', 0, $newDigit); 
-
+            // $Acc_id=$intVal;
         //this for existing users
 
         $CusAcc = new Cus_account();
@@ -47,6 +49,9 @@ class AddAccount extends Controller
 
         if($customer){
             $CusAcc_id=$CusAcc->id;
+            Session::forget('cus_id');
+            Session::forget('CusAcc_id');
+            Session::put('cus_id',$customer->id);
             Session::put('CusAcc_id', $CusAcc_id);
             return view('Admin.cus_reg.cus_reg_payment');
         }

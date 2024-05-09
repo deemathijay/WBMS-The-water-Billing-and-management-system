@@ -20,6 +20,9 @@ class Cus_reg extends Controller
         }
         $Org_id = Session::get('Org_id');
 
+        Session::forget('cus_id');
+        Session::forget('CusAcc_id');
+
         $customer = new Customer();
         $customer->Cus_id = CusIdGenerator::generateCusId();
         $customer->Cus_FullName = $request->input('Cus_FullName');
@@ -34,11 +37,13 @@ class Cus_reg extends Controller
         $customer->Org_id = $Org_id;
         $customer->save();
 
+        Session::put('cus_id',$customer->id);
+
 
         //generate accnomber for first registration
 
         $CusAcc = new Cus_account();
-        $CusAcc->CusAcc_No = CusIdGenerator::FirstAccount($customer->Cus_id);
+        $CusAcc->CusAcc_No = CusIdGenerator::FirstAccount($customer->Cus_id);  ///cus id genarator
         $CusAcc->CusAcc_Balance = 0;
         $CusAcc->CusAcc_Status = "Active" ;
         $CusAcc->CusAcc_InstallmentStatus = "No" ;
@@ -54,13 +59,16 @@ class Cus_reg extends Controller
         }
         //error handling should come
     }
-
+    
+///if customer chooce onr time payment  it process here
     public function payment(Request $request){
         $amount= $request->input('Reg_Fee');
         Session::put('amount',$amount);
         return view('Admin.cus_reg.additionalCharges');
-    }
+    }//then returning back to additional charges view
 
+
+    //if customer chooce installment.. it will process here
     public function Installment(Request $request){
         $install = new Cus_Installment();
         $install->Ins_Premium_amount=$request->input('premiumAmount');
@@ -72,7 +80,7 @@ class Cus_reg extends Controller
         return view('Admin.cus_reg.additionalCharges');
     }
 
-
+///additional charges will cal in here
     public function AdditionalCharges(Request $request){
         if(Session::get('amount')){
             $amount=Session::get('amount');
@@ -95,6 +103,8 @@ class Cus_reg extends Controller
         $customerId=Session::get('cus_id');
         $customer = Customer::findOrFail($customerId);
         $CusAccid = Cus_account::findOrFail($cusAccNo);
+        Session::forget('cus_id');
+        Session::forget('CusAcc_id');
         
         return view('Admin.cus_reg.invoice',compact('customer','RegFee','CusAccid'));
     
@@ -102,11 +112,58 @@ class Cus_reg extends Controller
 
     public function customerList()
     {
-        $customers = Customer::with('cusAccounts')->get();
+        $customers = Customer::all();
 
         return view('Admin.pages.cus_list', compact('customers'));
     }
 
-    
+    public function cusAccList(){
+        $customers = Customer::all();
+
+        return view('Admin.pages.cusAccList', compact('customers'));
+
+    }
+
+    //edit button in cus list
+    public function editCusProfile($id){
+        $customer = Customer::find($id); 
+        return view('Admin.cus_reg.editProfile', ['customer' => $customer]);
+    }
+
+    //edit going to save
+
+    public function saveProfileChanges(Request $request,$id){
+
+        $customer = Customer::find($id);
+        $cusid =$customer->Cus_id;
+        $cusorg = $customer->Org_id;
+
+        $remark= $request->input('Cus_Remark');
+        if ($remark=""){
+            $remark="None";
+        }
+
+        if($customer){
+        $customer->update([
+            'Cus_FullName' => $request->input('Cus_FullName'),
+            'Cus_NameInitials' => $request->input('Cus_NameInitials'),
+            'Cus_Address' => $request->input('Cus_Address'),
+            'Cus_NIC' => $request->input('Cus_NIC'),
+            'Cus_Gender' => $request->input('Cus_Gender'),
+            'Cus_Phone1' => $request->input('Cus_Phone1'),
+            'Cus_Phone2' => $request->input('Cus_Phone2'),
+            'Cus_DOB' => $request->input('Cus_DOB'),
+            'Cus_Remark' => $remark,
+        ]);
+
+        return view('Admin.cus_reg.updateSucess',compact('customer'));
+    }
+    }
+    //customer profile viewer
+    public function viewCusProfile($id){
+
+        $customer = Customer::findOrFail($id);
+        return view('Admin.cus_reg.cus_profile',compact('customer'));
+    }
    
 }

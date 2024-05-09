@@ -17,6 +17,8 @@ class PageController extends Controller
                 return view('Admin.pages.agt_reg');
             case 'cus_list':
                 return view('Admin.pages.cus_list');
+            case 'cusAccList':
+                return view('Admin.pages.cusAccList');
             case 'payment_1':
                 return view('Admin.pages.payment_1');
             case 'pay_list':

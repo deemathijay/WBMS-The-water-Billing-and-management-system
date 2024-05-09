@@ -14,52 +14,61 @@
         </div>
         
         <div class="form">
-        <form method="post"name="form" action="{{route('Cus_reg')}}" onsubmit="return validateForm()">
-            {{ csrf_field() }}
+        <form method="post"name="form" action="{{route('saveProfileChanges',['id'=>$customer->id])}}" onsubmit="return validateForm()">
+            
+            @csrf
+            {{-- @method('PUT')  --}}
             <br />
             <br />
 
             <div class="first">
             <label>Full Name</label>
-            <input type="text" name="Cus_FullName" required/><br /><br />
+            <input type="text" name="Cus_FullName" value="{{ $customer->Cus_FullName }}" required/><br /><br />
 
             <label>Name with Initials</label> 
-            <input type="text" name="Cus_NameInitials" required /><br /><br />
+            <input type="text" name="Cus_NameInitials" value="{{ $customer->Cus_NameInitials }}" required /><br /><br />
 
             <label>NIC Number </label> 
-            <input type="text" name="Cus_NIC" id="nic" required/><br /><br />
+            <input type="text" name="Cus_NIC" id="nic" value="{{ $customer->Cus_NIC }}" required/><br /><br />
 
-            {{-- <label>Account No </label> 
-            <input type="text" name="accNo" required /><br /><br />
-            </div> --}}
+            <!-- <label>Account No </label> 
+            <input type="text" name="accNo" value="{{ $customer->Cus_FullName }}" required /><br /><br />
+            </div> -->
 
             <div class="mobile">
             <label>Mobile Number</label>
-            <input type="text" name="Cus_Phone1" id="mobile1" required/><br><span>(Number for send SMS)</span>
+            <input type="text" name="Cus_Phone1" id="mobile1" value="{{ $customer->Cus_Phone1 }}" required/><br><span>(Number for send SMS)</span>
             </div><br />
 
             <div class="mobile">
                 <label>Mobile Number 2</label>
-                <input type="text" name="Cus_Phone2" id="mobile2"value ="0000000000"/>
+                <input type="text" name="Cus_Phone2" id="mobile2" value="{{ $customer->Cus_Phone2 }}" />
                 </div><br />
 
             <div class="last">
             <label>Address</label> 
-            <textarea name="Cus_Address" rows="3" cols="74" class="address" required> </textarea>
+            <input type="text" name="Cus_Address" rows="3" cols="74" class="address" value="{{ $customer->Cus_Address }}" required> </input>
             <br /><br /><br/><br />
 
             <label>Gender</label> 
+
+            @if($customer->Cus_Gender=='M')
+                <span> Male</span>
+                @else
+                <span> Female</span>
+            @endif
+
             <select name="Cus_Gender" required>
                 <option value="M">Male</option>
                 <option value="F">Female</option>
             </select><br /><br />
 
             <label>Date of Birth</label> 
-            <input type="date" class="date" name="Cus_DOB" required>
+            <input type="date" class="date" name="Cus_DOB" value="{{ $customer->Cus_DOB }}" required>
             <br /><br />
 
             <label>Remark </label>
-            <input type="text" name="Cus_Remark" value="None"/><br /><br />
+            <input type="text" name="Cus_Remark" value="{{ $customer->Cus_Remark }}"/><br /><br />
             </div>
 
             <div class="ok">

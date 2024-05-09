@@ -9,18 +9,19 @@
     <div class="profile-topbar">
         <div class="sub1">
             <ul>
-                <li><span class="topic">Bataya ABC</span></li>
-                <li>Ammatasiri bataya company </li>
-                <li>1/3 , kotendeniya road ,Meerigama.</li>
+                <li><span class="topic">{{$customer->Cus_NameInitials}}</span></li>
+                <li>{{$customer->Cus_FullName}} </li>
+                <li>{{$customer->Cus_Address}}</li>
             </ul>
         </div>
         <div class="sub2">
             <ul>
-                <li><span class="label">Account No  </span> <span class="input"> : AC 345743543</span> </li>
-                <li><span class="label">Customer ID </span> <span class="input"> : C 435354353</span></li>
-                <li><span class="label">Telephone No</span> <span class="input"> : 0716434757</span></li>
-                <li><span class="label">NIC No      </span> <span class="input"> : 652460135 V </span></li>
-                <li><span class="label">Reg Date    </span> <span class="input"> : 2024 / 10 / 45</span></li>
+                {{-- <li><span class="label">Account No  </span> <span class="input"> : AC 345743543</span> </li> --}}
+                <li><span class="label">Customer ID </span> <span class="input"> : {{$customer->Cus_id}}</span></li>
+                <li><span class="label">Telephone No</span> <span class="input"> : {{$customer->Cus_Phone1}}</span></li>
+                <li><span class="label">Telephone No</span> <span class="input"> : {{$customer->Cus_Phone2}}</span></li>
+                <li><span class="label">NIC No      </span> <span class="input"> : {{$customer->Cus_NIC}} </span></li>
+                <li><span class="label">Reg Date    </span> <span class="input"> : {{$customer->created_at}}</span></li>
             </ul>
         </div>
         <div class="sub3">
@@ -33,7 +34,7 @@
     </div>
     <div class="sub-topic-bar">
         <ul>
-            <li><span class="sub-topic">Transactions</span></li>
+            <li><span class="sub-topic">Accounts</span></li>
             <!-- have to add js code to define today and limitations -->
             <li><div class="wtf">
                     <span class="filter-month"><input type="date" id="datePicker" name="datePicker" min="2024-01-01" max="2024-12-31"></span>

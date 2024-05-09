@@ -30,9 +30,13 @@ Route::get('/pages/{pageName}', [PageController::class,'show'])->name('page');
 Route::post('/customer_registration',[Cus_reg::class,'register'])->name('Cus_reg');
 Route::post('/paymen',[Cus_reg::class,'Installment'])->name('Installment');
 Route::post('/payments',[Cus_reg::class,'payment'])->name('Cus_RegOneTimePay');
+Route::get('/Customers-Account-list',[Cus_reg::class,'cusAccList'])->name('cusAccList');
 Route::get('/Customers-list',[Cus_reg::class,'customerList'])->name('customerList');
 Route::post('/payment',[Cus_reg::class,'AdditionalCharges'])->name('Cus_RegAdditionalCharges');
 Route::post('/SearchForAddAccount',[AddAccount::class,('search')])->name('searchForAddAcc');
+Route::get('/Customers-list/{id}',[Cus_reg::class,'editCusProfile'])->name('editCusProfile');
+Route::post('/Edit-Customer-Details/{id}',[Cus_reg::class,'saveProfileChanges'])->name('saveProfileChanges');
+Route::get('/Customers-list/profile/{id}',[Cus_reg::class,'viewCusProfile'])->name('viewCusProfile');
 
 
 Route::post('/Agent_registration',[Agt_reg::class,'register'])->name('Agt_reg');
@@ -41,4 +45,4 @@ Route::post('/Agent_registration',[Agt_reg::class,'register'])->name('Agt_reg');
 
 
 ///add existing usser to account
-Route::get('/AddNewConnection',[AddAccount::class,'addAccount'])->name('AddNewConnection');
+Route::get('/AddNewConnection/{customerId}',[AddAccount::class,'addAccount'])->name('AddNewConnection');

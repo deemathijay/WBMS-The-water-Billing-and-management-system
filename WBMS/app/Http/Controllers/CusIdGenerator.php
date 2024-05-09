@@ -22,7 +22,7 @@ class CusIdGenerator extends Controller
     }
 
     public static function FirstAccount($Cus_id) {
-        $Acc_id = 'V' . substr_replace($Cus_id, '', 0, 1); 
+        $Acc_id = 'V' . substr($Cus_id, 1) . 0; 
         return $Acc_id;
     }
     
