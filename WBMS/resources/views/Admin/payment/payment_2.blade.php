@@ -120,6 +120,11 @@
             right: 10px;
             cursor: pointer;
         }
+        .balance{
+            color: #2f830f;
+            font-weight: bold;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -145,12 +150,14 @@
                 </tr>
                 <tr>
                     <th>Current Balance</th>
-                    <td>$500.00</td>
+                    <td id="TotalAmount">$500.00</td>
                 </tr>
             </table>
         </div>
         <div class="payment-form">
-            <input type="number" name="paymentAmount" placeholder="Enter Payment Amount" class="input" required>
+            <input type="number" name="paymentAmount" placeholder="Enter Payment Amount" class="input" id="PayAmount" required>
+            <br>
+            <span class="balance">Balance : <span id="Balance"></span></span>
             <button type="button" class="button" onclick="openPopup()">Pay</button>
         </div>
     </div>
@@ -181,12 +188,31 @@
                     <th>Payment Amount</th>
                     <td id="confirmAmount"></td>
                 </tr>
+                <tr>
+                    <th>C/F Amount </th>
+                    <td id="CFBalance"></td>
+                </tr>
             </table>
             <button type="button" class="button" onclick="confirmPayment()">Confirm Payment</button>
+            <button type="button" class="button" onclick="confirmPayment()">Print Invoice</button>
         </div>
     </div>
 
     <script>
+
+        document.getElementById('PayAmount').addEventListener('input', CalBalance);
+        // document.getElementById('TotalAmount').addEventListener('input', CalBalance);
+
+        function CalBalance() {
+            var Total = parseFloat(document.getElementById('TotalAmount').innerText.replace('$', ''));
+            var PayAmount = parseFloat(document.getElementById('PayAmount').value);
+            var Balance = PayAmount -Total  ;
+
+            document.getElementById('Balance').innerText = Balance.toFixed(2);
+        }
+
+
+
         function openPopup() {
             document.getElementById('paymentPopup').style.display = 'flex';
             var amount = document.getElementsByName('paymentAmount')[0].value;

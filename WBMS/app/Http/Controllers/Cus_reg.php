@@ -167,11 +167,14 @@ class Cus_reg extends Controller
         return view('Admin.cus_reg.cus_profile',compact('customers','cus'));
     }
    ///customer account viewer
-    public function viewCusAcc($id,$no){
+    public function viewCusAcc($no){
 
-        $account = Cus_account::findOrFail($no);
-        $customer =Customer::findOrFail($id);
-        return view('Admin.cus_reg.cus_profile',compact('customer','account'));
+        $account = Cus_account::find($no);
+        $cus=$account->Cus_id;
+
+        $customer =Customer::findOrFail($cus);
+
+        return view('Admin.cus_reg.accProfile',compact('customer','account'));
     }
    
 }

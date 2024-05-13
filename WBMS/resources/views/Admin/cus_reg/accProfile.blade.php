@@ -9,38 +9,39 @@
     <div class="profile-topbar">
         <div class="sub1">
             <ul>
-                <li><span class="topic">{{$customer->Cus_NameInitials}}</span></li>
-                <li>{{$customer->Cus_FullName}} </li>
-                <li>{{$customer->Cus_Address}}</li>
+                <li><span class="topic">{{$customer->Cus_NameInitials ?? ''}}</span></li>
+                <li>{{$customer->Cus_FullName ?? ''}} </li>
+                <li>{{$customer->Cus_Address ?? ''}}</li>
+                <li style="font-weight: bold"><span class="label">Account No  </span> <span class="input"> : {{$account->CusAcc_No ?? ''}}</span> </li>
             </ul>
         </div>
         <div class="sub2">
             <ul>
-                <li><span class="label">Account No  </span> <span class="input"> : {{$account->CusAcc_No}}</span> </li>
-                <li><span class="label">Customer ID </span> <span class="input"> : {{$customer->Cus_id}}</span></li>
-                <li><span class="label">Telephone No</span> <span class="input"> : {{$customer->Cus_Phone1}}</span></li>
-                <li><span class="label">Telephone No</span> <span class="input"> : {{$customer->Cus_Phone2}}</span></li>
-                <li><span class="label">NIC No      </span> <span class="input"> : {{$customer->Cus_NIC}} </span></li>
-                <li><span class="label">Reg Date    </span> <span class="input"> : {{$customer->created_at}}</span></li>
+                
+                <li><span class="label">Customer ID </span> <span class="input"> : {{$customer->Cus_id ?? ''}}</span></li>
+                <li><span class="label">Telephone No</span> <span class="input"> : {{$customer->Cus_Phone1 ?? ''}}</span></li>
+                <li><span class="label">Telephone No</span> <span class="input"> : {{$customer->Cus_Phone2 ?? '' }}</span></li>
+                <li><span class="label">NIC No      </span> <span class="input"> : {{$customer->Cus_NIC ?? ''}} </span></li>
+                <li><span class="label">Reg Date    </span> <span class="input"> : {{$customer->created_at ?? ''}}</span></li>
             </ul>
         </div>
         <div class="sub3">
             <ul>
-                <li class="wtf"><span class="text-Btn-Active">Print</span>
-                <li class="wtf"><span class="text-Btn-Active">Active</span> <li class="wtf"><span class="text-Btn-Active">Edit</span></li>
-                <li ><span class="rs-tag">Rs.</span><span class="balance">5348.89</span></li>
+                <li class="wtf"><span class="text-Btn-Active" style="background-color: rgb(8, 6, 156)">Print</span>
+                <li class="wtf"><span class="text-Btn-Active">Active</span> <li class="wtf"><span class="text-Btn-Active" style="background-color: rgb(8, 6, 156)">Edit</span></li>
+                <li ><span class="rs-tag">Rs.</span><span class="balance">{{$account->CusAcc_Balance ?? ''}}</span></li>
             </ul>
         </div>
     </div>
     <div class="sub-topic-bar">
         <ul>
-            <li><span class="sub-topic">Accounts</span></li>
+            <li><span class="sub-topic">Transactions</span></li>
             <!-- have to add js code to define today and limitations -->
             <li><div class="wtf">
                     <span class="filter-month"><input type="date" id="datePicker" name="datePicker" min="2024-01-01" max="2024-12-31"></span>
                     <span>To</span>
                     <input type="date" id="datePicker" name="datePicker" min="2024-01-01" max="2024-12-31">
-                    <li class="wtf"><span class="text-Btn-Active">Filter</span>
+                    <span class="text-Btn-Active" style="background-color: #b16107">Filter</span>
                 </div>
             </li> 
             <li><label for="sortingOptions">Sort By:</label>
@@ -58,12 +59,14 @@
             <li>
                 <div class="wtf">
                     <input type="text">
-                    <li class="wtf"><span class="text-Btn-Active">Search</span>
+                    <span class="text-Btn-Active" style="background-color: #b16107">Search</span>
                 </div>
             </li>
-            <li>
-                <li class="wtf"><span class="text-Btn-Active">Print</span>
-            </li>
+            {{-- <li>
+                <div class="wtf">
+                <span class="text-Btn-Active">Print</span>
+
+            </li> --}}
         </ul>
     </div>
     <div class="table">

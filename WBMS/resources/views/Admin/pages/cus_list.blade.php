@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('CSS/Admin.css')}}">
     <title>Customer List</title>
+    <style>
+        @media print{
+            .hide-on-print {
+                display: none !important; 
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="sub-topic-bar">
@@ -12,20 +19,32 @@
             <li><span class="sub-topic">Customer's Accounts List</span></li>
             <li>
                 <label for="sortingOptions">Sort By:</label>
-                <select id="sortingOptions" name="sortingOptions" placeholder="Sort By">
-                    <option value="nameAscending">Name (A-Z)</option>
-                    <option value="nameDescending">Name (Z-A)</option>
-                    <option value="dateAscending">Date Added (Oldest First)</option>
-                    <option value="dateDescending">Date Added (Newest First)</option>
+                <select id="sortingOptions" name="sortingOptions" onchange="sortTable()">
+                    <option value="cusIdAsc">Customer ID (Ascending)</option>
+                    <option value="cusIdDesc">Customer ID (Descending)</option>
+                    <option value="nameAsc">Name (A-Z)</option>
+                    <option value="nameDesc">Name (Z-A)</option>
+                    <option value="dateAsc">Registered Date (Oldest First)</option>
+                    <option value="dateDesc">Registered Date (Newest First)</option>
                 </select>
             </li>
             <li>
                 <div class="wtf">
-                    <input type="text" id="customerSearch" placeholder="Search by name">
-                    <button type="submit" class="Btn-search">Search</button> <!-- Replace with a suitable button -->
+                    <input type="date" id="fromDate" name="fromDate" onchange="filterTable()" min="2024-01-01">
+                    <span>To</span>
+                    <input type="date" id="toDate" name="toDate" onchange="filterTable()" min="2024-01-01">
+
+                    {{-- <span class="text-Btn-Active" style="background-color: #b16107">Filter</span> --}}
                 </div>
             </li>
             <li>
+
+                <div class="wtf">
+                    <input type="text" id="customerSearch" onkeyup="filterTable()" placeholder="Search ...">
+                    <button type="submit" class="Btn-search">Search</button> 
+                </div>
+            </li>
+            {{-- <li>
                 <label for="filterStatus">Filter By Status:</label>
                 <select id="filterStatus" name="filterStatus">
                     <option value="all">All</option>
@@ -33,14 +52,14 @@
                     <option value="inactive">Inactive</option>
                     <option value="red">Red</option>
                 </select>
-            </li>
+            </li> --}}
             <li>
-                <button type="button" class="Btn-print">Print</button> <!-- Replace with a suitable button -->
+                <button type="button" class="Btn-print" onclick="printWindow()">Print</button> 
             </li>
         </ul>
     </div>
     <div class="table">
-        <table>
+        <table id="customerTable">
             <tr>
                 <th id="cus-id">Customer ID</th>
                 <th id="cus-name">Name With Initials</th>
@@ -50,21 +69,11 @@
                 <th id="cus-address">Address</th>
                 <th id="cus-balance">Date Of Birth</th>
                 <th id="cus-status">Remark (if Any)</th>
-                <th id="cus-edit">Edit</th> <!-- New Edit column -->
+                <th id="cus-edit" class="hide-on-print">Edit</th> 
             </tr>
-            {{-- <tr>
-                <td id="cus-id-data">C001</td>
-                <td id="cus-name-data">John Doe</td>
-                <td id="cus-nic-data">123456789X</td>
-                <td id="cus-phone-data">123-456-7890</td>
-                <td id="cus-reg-date-data">2023-10-15</td>
-                <td id="cus-address-data">123 Main St, City</td>
-                <td id="cus-balance-data">$500.00</td>
-                <td id="cus-status-data">Active</td>
-                <td id="cus-edit-data"><a href="edit_customer.html" class="Btn-edit">Edit</a></td> <!-- Change to a button class -->
-            </tr> --}}
+         
             @foreach($customers as $customer)
-                {{-- @foreach($customer->accounts as $account) --}}
+                
                     <tr>
                         <td><a href="{{route('viewCusProfile',['id'=>$customer->id])}}">{{ $customer->Cus_id }}</a></td>
                         <td><a href="{{route('viewCusProfile',['id'=>$customer->id])}}">{{ $customer->Cus_NameInitials }}</a></td>
@@ -74,12 +83,150 @@
                         <td><a href="{{route('viewCusProfile',['id'=>$customer->id])}}">{{ $customer->Cus_Address }}</a></td>
                         <td><a href="{{route('viewCusProfile',['id'=>$customer->id])}}">{{ $customer->Cus_DOB }}</a></td>
                         <td><a href="{{route('viewCusProfile',['id'=>$customer->id])}}">{{ $customer->Cus_Remark }}</a></td>
-                        <td><a href="{{route('editCusProfile',['id'=>$customer->id])}}" class="Btn-edit" style="color: aliceblue">Edit</a></td>
+                        <td class="hide-on-print"><a href="{{route('editCusProfile',['id'=>$customer->id])}}" class="Btn-edit" style="color: aliceblue">Edit</a></td>
                     </tr>
-                {{-- @endforeach --}}
+                
             @endforeach
-            <!-- Additional customer rows go here -->
+            
         </table>
     </div>
+
+    {{-- here im going to fked up officially implementing js for filter sunctions --}}
+
+    <script>
+        function filterTable() {
+            var input = document.getElementById('customerSearch').value.toLowerCase();
+            var fromDate = document.getElementById('fromDate').value;
+            var toDate = document.getElementById('toDate').value;
+            var table = document.getElementById('customerTable');
+            var rows = table.getElementsByTagName('tr');
+
+            for (var i = 1; i < rows.length; i++) {
+                var nameCell = rows[i].getElementsByTagName('td')[1]; 
+                var nicCell = rows[i].getElementsByTagName('td')[2]; 
+                var idCell = rows[i].getElementsByTagName('td')[0]; 
+                var phoneCell = rows[i].getElementsByTagName('td')[3]; 
+                var regDateCell = rows[i].getElementsByTagName('td')[4]; //  registration date cell
+
+                if (nameCell && nicCell && idCell && phoneCell && regDateCell) {
+                    var name = nameCell.textContent.toLowerCase();
+                    var nic = nicCell.textContent.toLowerCase();
+                    var id = idCell.textContent.toLowerCase();
+                    var phone = phoneCell.textContent.toLowerCase();
+                    var regDate = new Date(regDateCell.textContent);
+
+                    var isInDateRange = true;
+
+                    // Check if the registration date falls within the selected range
+                    if (fromDate && toDate) {
+                        var fromDateObj = new Date(fromDate);
+                        var toDateObj = new Date(toDate);
+
+                        if (regDate < fromDateObj || regDate > toDateObj) {
+                            isInDateRange = false;
+                        }
+                    }
+
+                    if ((name.indexOf(input) > -1 || 
+                        nic.indexOf(input) > -1 || 
+                        id.indexOf(input) > -1 || 
+                        phone.indexOf(input) > -1) && isInDateRange) {
+                        rows[i].style.display = '';
+                    } else {
+                        rows[i].style.display = 'none';
+                    }
+                }
+            }
+        }
+
+
+       
+            function sortTable() {
+                var table, rows, switching, i, x, y, shouldSwitch;
+                table = document.getElementById("customerTable");
+                switching = true;
+                var sortOption = document.getElementById("sortingOptions").value;
+
+                while (switching) {
+                    switching = false;
+                    rows = table.rows;
+                    for (i = 1; i < (rows.length - 1); i++) {
+                        shouldSwitch = false;
+                        x = rows[i].getElementsByTagName("TD")[getColumnIndex(sortOption)];
+                        y = rows[i + 1].getElementsByTagName("TD")[getColumnIndex(sortOption)];
+
+                        if (x && y) {
+                            if (sortOption.includes("Asc") && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                                shouldSwitch = true;
+                                break;
+                            } else if (sortOption.includes("Desc") && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                shouldSwitch = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (shouldSwitch) {
+                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                        switching = true;
+                    }
+                }
+            }
+
+            function getColumnIndex(sortOption) {
+                switch (sortOption) {
+                    case "cusIdAsc":
+                    case "cusIdDesc":
+                        return 0; // Customer ID 
+                    case "nameAsc":
+                    case "nameDesc":
+                        return 1; // Name 
+                    case "nicAsc":
+                    case "nicDesc":
+                        return 2; // NIC 
+                    case "phoneAsc":
+                    case "phoneDesc":
+                        return 3; // Phone Number 
+                    case "dateAsc":
+                    case "dateDesc":
+                        return 4; // Registered Date 
+                    case "addressAsc":
+                    case "addressDesc":
+                        return 5; // Address 
+                    case "dobAsc":
+                    case "dobDesc":
+                        return 6; // Date Of Birth 
+                    case "remarkAsc":
+                    case "remarkDesc":
+                        return 7; // Remark 
+                    default:
+                        return -1; // Invalid option
+                }
+            }
+
+            function printWindow() {
+                var printContents = document.getElementById("customerTable").outerHTML;
+                var originalContents = document.body.innerHTML;
+                document.body.innerHTML = printContents;
+                window.print();
+                document.body.innerHTML = originalContents;
+                }
+
+
+        </script>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

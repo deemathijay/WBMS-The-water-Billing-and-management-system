@@ -11,7 +11,7 @@ class Cus_account extends Model
 
     // public function customer()
     // {
-    //     return $this->belongsTo(Customer::class, 'id');
+    //     return $this->belongsTo(Customer::class, 'Cus_id');
     // }
 
     // public function Installments()

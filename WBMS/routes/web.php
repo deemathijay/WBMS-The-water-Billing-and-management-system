@@ -3,12 +3,14 @@
 use App\Http\Controllers\AddAccount;
 use App\Http\Controllers\Agt_reg;
 use App\Http\Controllers\Cus_reg;
+use App\Http\Controllers\Payments;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginValidation;
 use App\Http\Controllers\OrgLogin\OrgLoginValidation;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\welcome;
 use App\Http\Controllers\works;
+use Faker\Provider\ar_EG\Payment;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +38,8 @@ Route::post('/payment',[Cus_reg::class,'AdditionalCharges'])->name('Cus_RegAddit
 Route::post('/SearchForAddAccount',[AddAccount::class,('search')])->name('searchForAddAcc');
 Route::get('/Customers-list/{id}',[Cus_reg::class,'editCusProfile'])->name('editCusProfile');
 Route::post('/Edit-Customer-Details/{id}',[Cus_reg::class,'saveProfileChanges'])->name('saveProfileChanges');
-Route::get('/Customers-list/profile/{id}',[Cus_reg::class,'viewCusProfile'])->name('viewCusProfile');
-Route::get('/Customers-list/profile/Account/{id}{no}',[Cus_reg::class,'viewCusAcc'])->name('viewCusAcc');
+Route::get('/Customers-profile/{id}',[Cus_reg::class,'viewCusProfile'])->name('viewCusProfile');
+Route::get('/Customers-lAccount-Profile/{no}',[Cus_reg::class,'viewCusAcc'])->name('viewCusAcc');
 
 Route::post('/Agent_registration',[Agt_reg::class,'register'])->name('Agt_reg');
 // Route::post('/LoginValidation',[LoginValidation::class,'Validate1'])->name('Validate1');
@@ -46,3 +48,11 @@ Route::post('/Agent_registration',[Agt_reg::class,'register'])->name('Agt_reg');
 
 ///add existing usser to account
 Route::get('/AddNewConnection/{customerId}',[AddAccount::class,'addAccount'])->name('AddNewConnection');
+
+
+
+
+//routing for payment
+Route::post('/paySearch',[Payments::class,'Search'])->name('SearchPay');
+
+

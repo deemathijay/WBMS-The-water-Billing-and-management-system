@@ -12,7 +12,7 @@
     .container {
         max-width: 600px;
         margin: 50px auto;
-        margin-top: 20vh;
+        margin-top: 15vh;
         padding: 20px;
         border: 1px solid #ccc;
         border-radius: 5px;
@@ -39,6 +39,13 @@
         border-radius: 5px;
         cursor: pointer;
     }
+    select{
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
 </style>
 </head>
 <body>
@@ -46,6 +53,20 @@
         <h1>Add Additional Charges</h1>
         <form id="additionalChargesForm" action="{{ route('Cus_RegAdditionalCharges') }}" method="POST">
             @csrf
+            
+            <label for="account_type">Choose the Account Type:</label>
+                <select name="account_type" id="account_type">
+                    <option value="Home">Home</option>
+                    <option value="Business">Business</option>
+                    <option value="Charity">Charity</option>
+                    <option value="Option 1">Option 1</option>
+                    <option value="Option 2">Option 2</option>
+                    <option value="Option 3">Option 3</option>
+                </select>
+
+            <label for="">Remark (If Any Changes Ex: Address)</label>
+            <input type="text" name="Cus_Remark">
+
             <label for="registrationFee">Registration Fee:</label>
             <input type="text" id="registrationFee" name="registrationFee">
 

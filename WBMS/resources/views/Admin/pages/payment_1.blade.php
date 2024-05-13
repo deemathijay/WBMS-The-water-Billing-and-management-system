@@ -88,12 +88,48 @@
 <body>
     <div class="head">
         <h1>Search Account</h1>
-        <form method="" action="#">
+        <form method="post" action="{{route('SearchPay')}}">
             {{ csrf_field() }}
             <input type="text" name="searchInput" placeholder="Enter Account Number or NIC Number" class="input" required>
             <button type="submit" name="search" class="button"><b>Search</b></button>
         </form>
         <div class="details">
+
+            @if($accounts)
+                <tr>
+                    <th>Name</th>
+                    <th>Account Number</th>
+                    <th>NIC Number</th>
+                    <th>Address</th>
+                </tr>
+            @foreach ($accounts as $account)
+                <tr>
+                    <td>Imesha Dewmini</td>
+                    <td>A 0934824238</td>
+                    <td>123456789 V</td>
+                    <td>kotadeniya road, meerigama</td>
+                </tr>
+            @endforeach
+            @endif
+            @if($customers)
+                <tr>
+                    <th>Name</th>
+                    <th>Account Number</th>
+                    <th>NIC Number</th>
+                    <th>Address</th>
+                </tr>
+            @foreach ($customers as $customer)
+                @foreach ($customer->accounts as $account)
+                    
+                @endforeach
+                <tr>
+                    <td>Imesha Dewmini</td>
+                    <td>A 0934824238</td>
+                    <td>123456789 V</td>
+                    <td>kotadeniya road, meerigama</td>
+                </tr>
+            @endforeach
+            @endif
             <table>
                 <tr>
                     <th>Name</th>

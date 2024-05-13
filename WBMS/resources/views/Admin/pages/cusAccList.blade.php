@@ -74,7 +74,7 @@
                         <td>{{ $customer->Cus_Address }}</td>
                         <td>{{ $account->CusAcc_Balance }}</td>
                         <td>{{ $account->CusAcc_Status }}</td>
-                        <td><a href="#" class="Btn-edit">Edit</a></td>
+                        <td><a href="#" class="Btn-edit" style="color: aliceblue">Edit</a></td>
                     </tr>
                 @endforeach
             @endforeach

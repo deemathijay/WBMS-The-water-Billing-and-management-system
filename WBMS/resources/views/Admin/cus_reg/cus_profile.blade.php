@@ -86,13 +86,13 @@
            {{-- @foreach($customers as $customer) --}}
            @foreach($customers as $account)
             <tr>
-                <td id="Trans-id-data"><a href="{{route('viewCusAcc',['id'=>$cus->id,'no'=>$account->id])}}">{{$account->CusAcc_No}}</a></td>
-                <td id="cus-name-data"><a href="{{route('viewCusAcc',['id'=>$cus->id,'no'=>$account->id])}}">{{$account->created_at}}</a></td>
-                <td id="Trans-date-data"><a href="{{route('viewCusAcc',['id'=>$cus->id,'no'=>$account->id])}}">{{$account->CusAcc_Remark}}</a></td>
-                <td id="cus-address-data"><a href="{{route('viewCusAcc',['id'=>$cus->id,'no'=>$account->id])}}">$account->CusAcc_type</a></td>
-                <td id="trans-Remark-data"><a href="{{route('viewCusAcc',['id'=>$cus->id,'no'=>$account->id])}}">{{$account->CusAcc_Status}}</a></td>
-                <td id="trans-amount-data"><a href="{{route('viewCusAcc',['id'=>$cus->id,'no'=>$account->id])}}">{{$account->CusAcc_InstallmentStatus}}</a></td>
-                <td id="trans-balance-data"><a href="{{route('viewCusAcc',['id'=>$cus->id,'no'=>$account->id])}}">{{$account->CusAcc_Balance}}</a></td>
+                <td id="Trans-id-data"><a href="{{route('viewCusAcc',['no'=>$account->id])}}">{{$account->CusAcc_No}}</a></td>
+                <td id="cus-name-data"><a href="{{route('viewCusAcc',['no'=>$account->id])}}">{{$account->created_at}}</a></td>
+                <td id="Trans-date-data"><a href="{{route('viewCusAcc',['no'=>$account->id])}}">{{$account->CusAcc_Remark}}</a></td>
+                <td id="cus-address-data"><a href="{{route('viewCusAcc',['no'=>$account->id])}}">Dummy</a></td>
+                <td id="trans-Remark-data"><a href="{{route('viewCusAcc',['no'=>$account->id])}}">{{$account->CusAcc_Status}}</a></td>
+                <td id="trans-amount-data"><a href="{{route('viewCusAcc',['no'=>$account->id])}}">{{$account->CusAcc_InstallmentStatus}}</a></td>
+                <td id="trans-balance-data"><a href="{{route('viewCusAcc',['no'=>$account->id])}}">{{$account->CusAcc_Balance}}</a></td>
             </tr>
             @endforeach
             {{-- @endforeach --}}
