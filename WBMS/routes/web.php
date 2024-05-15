@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddAccount;
 use App\Http\Controllers\Agt_reg;
 use App\Http\Controllers\Cus_reg;
+use App\Http\Controllers\MeterMobile;
 use App\Http\Controllers\Payments;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginValidation;
@@ -41,7 +42,13 @@ Route::post('/Edit-Customer-Details/{id}',[Cus_reg::class,'saveProfileChanges'])
 Route::get('/Customers-profile/{id}',[Cus_reg::class,'viewCusProfile'])->name('viewCusProfile');
 Route::get('/Customers-lAccount-Profile/{no}',[Cus_reg::class,'viewCusAcc'])->name('viewCusAcc');
 
+
+///agent
 Route::post('/Agent_registration',[Agt_reg::class,'register'])->name('Agt_reg');
+Route::post('/Aget-RegPayments',[Agt_reg::class,'AgtReg_AdditionalChargers'])->name('AgtReg_AdditionalChargers');
+Route::get('/agents-list',[Agt_reg::class,'Agt_list'])->name('Agt_list');
+Route::get('/viewAgtProfile/{id}',[Agt_reg::class,'viewAgtProfile'])->name('viewAgtProfile');
+
 // Route::post('/LoginValidation',[LoginValidation::class,'Validate1'])->name('Validate1');
 
 
@@ -54,5 +61,16 @@ Route::get('/AddNewConnection/{customerId}',[AddAccount::class,'addAccount'])->n
 
 //routing for payment
 Route::post('/paySearch',[Payments::class,'Search'])->name('SearchPay');
+
+
+////meter mobile app
+Route::get('/meter',[MeterMobile::class,'View'])->name('meterlogin');
+Route::post('/meter/loginValidate',[MeterMobile::class,'loginValidate'])->name('loginValidate');
+Route::get('/meter/loginValidate/Calculatebill',[MeterMobile::class,'Calculatebill'])->name('Calculatebill');
+Route::get('/meter/loginValidate/BillHistory',[MeterMobile::class,'BillHistory'])->name('BillHistory');
+Route::get('/meter/loginValidate/PayHistory',[MeterMobile::class,'PayHistory'])->name('PayHistory');
+Route::get('/meter/loginValidate/Pricing',[MeterMobile::class,'Pricing'])->name('Pricing');
+
+
 
 

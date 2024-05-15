@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('CusAcc_Remark',150);
             $table->unsignedBigInteger('Cus_id');
             $table->foreign('Cus_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->unsignedBigInteger('Org_id');
+            $table->foreign('Org_id')->references('id')->on('organization_details');
            
             $table->timestamps();
         });

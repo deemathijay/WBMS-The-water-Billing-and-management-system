@@ -26,9 +26,9 @@
             <label>NIC Number </label> 
             <input type="text" name="Agt_NIC" id="nic" required/><br /><br />
 
-            <label>Account No </label> 
+            {{-- <label>Account No </label> 
             <input type="text" name="accNo" required /><br /><br />
-            </div>
+            </div> --}}
 
             <div class="mobile">
             <label>Mobile Number</label>
@@ -37,7 +37,7 @@
 
             <div class="mobile">
                 <label>Mobile Number 2</label>
-                <input type="text" name="Agt_Phone2" id="mobile2" required/>
+                <input type="text" name="Agt_Phone2" id="mobile2" required value="0000000000"/>
                 </div><br />
 
             <div class="last">
@@ -56,7 +56,7 @@
             <br /><br />
 
             <label>Remark </label>
-            <input type="text" name="Agt_Remark"/><br /><br />
+            <input type="text" name="Agt_Remark" value="None"/><br /><br />
             </div>
 
             <div class="ok">

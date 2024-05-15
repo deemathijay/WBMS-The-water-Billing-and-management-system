@@ -43,6 +43,7 @@ class AddAccount extends Controller
         $CusAcc->CusAcc_Status = "Active" ;
         $CusAcc->CusAcc_InstallmentStatus = "No" ;
         $CusAcc->CusAcc_Remark = "No";
+        $CusAcc->Org_id = Session::get('Org_id');
         $CusAcc->Cus_id = $customer->id;
 
         $CusAcc->save();

@@ -1,0 +1,242 @@
+
+
+/* main page */
+.main{
+    margin-top: 220px;
+    padding: 0;   
+}
+
+.p{
+    background-color: #fff;
+    border:1px solid hsla(0, 0%, 0%, 0.295);
+    padding: 10px;
+    height: 4vh;
+    font-size: 21px;
+    text-align: center;
+    margin: 40px;
+    border-color: #030897;
+}
+
+/* cal1 page */
+.head{
+    background-color: #fff;
+    border:1px solid hsla(0, 0%, 0%, 0.295);
+    padding:10px ;
+}
+
+.head label{
+    font-size: 25px;
+    margin: 20px;
+    padding:53px;
+}
+
+.head input{
+    height: 4vh;
+    width: 250px;
+    margin: 20px;
+    margin-left: 30px;
+}
+
+.head button{
+    height: 4vh;
+    width: 100px;
+    font-size: 16px;
+    background-color: #030897;
+    color: #fff;
+    margin-left: 110px;
+}
+
+.form{
+    margin-top: 10px;
+    background-color: #fff;
+    border:1px solid hsla(0, 0%, 0%, 0.295);
+    padding: 0;
+    height: 70vh;
+    
+}
+.align{
+    display: flex;
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.a {
+    margin-left: 20px;
+  
+}
+
+.b{
+    margin-left: 7.5px;
+}
+
+.c{
+    margin-left: 4px;
+}
+
+.d{
+    margin-left: 32.3px;
+}
+
+
+.name1{
+    margin-left: 10px;
+}
+
+.name2{
+    margin-left: 10px;
+}
+
+.name3{
+    margin-left: 10px;
+}
+
+.name4{
+    margin-left: 10px;
+}
+
+.confirm{
+    height: 4vh;
+    width: 100px;
+    font-size: 16px;
+    background-color: #030897;
+    color: #fff;
+    margin-left: 120px;
+    margin-top: 180px;
+}
+
+/* cal2 page */
+.up{
+    background-color: #fff;
+    border:1px solid hsla(0, 0%, 0%, 0.295);
+    padding:10px ;
+}
+
+.up label{
+    font-size: 25px;
+    margin: 20px;
+    padding:62px;
+}
+
+.up input{
+    height: 4vh;
+    width: 260px;
+    margin: 20px;
+    margin-left: 30px;
+}
+
+.up button{
+    height: 4vh;
+    width: 100px;
+    font-size: 16px;
+    background-color: #030897;
+    color: #fff;
+    margin-left: 110px;
+}
+
+
+.read{
+    background-color: #fff;
+    border:1px solid hsla(0, 0%, 0%, 0.295);
+    padding: 0;
+    height: 120vh;
+    font-size:18px;
+    margin-top: 10px;
+    
+}
+
+.r-b{
+    display:flex;
+
+}
+.blank{
+    margin:10px;
+    padding: 10px;
+    
+}
+
+.down .align{
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+.colo{
+    color: red;
+}
+
+.con{
+    height: 4vh;
+    width: 100px;
+    font-size: 16px;
+    background-color: #030897;
+    color: #fff;
+    margin-left: 120px;
+    margin-top: 20px;
+}
+
+/* bill */
+.bill{
+    background-color: #80D67E;
+    border:1px solid hsla(0, 0%, 0%, 0.295);
+    padding:0 ;
+    font-size: 21px;
+    text-align: center;
+}
+
+.Btn-conf{
+    align-items: end;
+    width: 30px;
+    height: 3vh;
+}
+
+.order{
+    background-color: #fff;
+    border:1px solid hsla(0, 0%, 0%, 0.295);
+    font-size: 17px;
+    margin-top: 10px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.order p{
+    margin: 10px;
+}
+
+.or1{
+    display: flex;
+    margin: 10px;
+    font-size: 17px;
+}
+
+/* b-history and p-history */
+
+.Detail{
+    display: flex;
+    background-color: #fff;
+    border:1px solid hsla(240, 81%, 22%, 0.849);
+    /* border-width: 5px; */
+    margin: 10px;
+    
+}
+
+.Detail p{
+    margin: 5px;
+}
+
+body input{
+    margin:10px;   
+    margin-left: 40px; 
+    margin-top: 40px;
+    border:1px solid hsla(240, 81%, 22%, 0.849);
+}
+
+.cus{
+    margin-top: 20px;
+}
+.cus p{
+    margin: 10px;
+    padding: 0;
+    margin-left: 20px;
+    text-align:start;
+}

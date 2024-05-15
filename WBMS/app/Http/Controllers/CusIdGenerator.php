@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Agents;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -31,7 +32,7 @@ class CusIdGenerator extends Controller
         $year = date('y');
         $Org_id = Session::get('Org_id');
         
-        $LastId = Customer::latest()->value('id');
+        $LastId = Agents::latest()->value('id');
         $NewId =$LastId+1;
         $Org_id_pad = str_pad($Org_id, 3, '0', STR_PAD_LEFT);
 

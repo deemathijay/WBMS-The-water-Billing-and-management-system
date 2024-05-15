@@ -23,6 +23,8 @@ return new class extends Migration
             $table->integer('RegFee_Total');
             $table->unsignedBigInteger('CusAcc_id');
             $table->foreign('CusAcc_id')->references('id')->on('cus_accounts')->onDelete('cascade');
+            $table->unsignedBigInteger('Org_id');
+            $table->foreign('Org_id')->references('id')->on('organization_details');
             $table->timestamps();
         });
     }

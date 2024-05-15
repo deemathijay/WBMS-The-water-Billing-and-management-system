@@ -49,6 +49,7 @@ class Cus_reg extends Controller
         $CusAcc->CusAcc_InstallmentStatus = "No" ;
         $CusAcc->CusAcc_Remark = "No";
         $CusAcc->Cus_id = $customer->id;
+        $CusAcc->Org_id = Session::get('Org_id');
 
         $CusAcc->save();
 
@@ -96,6 +97,7 @@ class Cus_reg extends Controller
         $RegFee->RegFee_Handling=$request->input('handlingCharges');
         $RegFee->RegFee_Other=$request->input('otherCharges');
         $RegFee->RegFee_Total=$total;
+        $RegFee->Org_id=Session::get('Org_id');
         $RegFee->CusAcc_id=Session::get('CusAcc_id');
         $RegFee->save();
 

@@ -95,9 +95,9 @@
         </form>
         <div class="details">
 
-            @if($accounts)
-                <tr>
-                    <th>Name</th>
+            {{-- @if($accounts)
+                <tr> --}}
+                    {{-- <th>Name</th>
                     <th>Account Number</th>
                     <th>NIC Number</th>
                     <th>Address</th>
@@ -118,8 +118,8 @@
                     <th>NIC Number</th>
                     <th>Address</th>
                 </tr>
-            @foreach ($customers as $customer)
-                @foreach ($customer->accounts as $account)
+            @foreach ($customers as $customer) --}}
+                {{-- @foreach ($customer->accounts as $account)
                     
                 @endforeach
                 <tr>
@@ -142,7 +142,7 @@
                     <td>A 0934824238</td>
                     <td>123456789 V</td>
                     <td>kotadeniya road, meerigama</td>
-                </tr>
+                </tr> --}}
                 <!-- Additional rows go here -->
             </table>
         </div>

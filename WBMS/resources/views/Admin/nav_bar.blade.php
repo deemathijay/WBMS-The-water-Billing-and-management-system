@@ -22,8 +22,7 @@
             <li><a href="#sub-nav1" target="content_frame"><i class="material-icons">badge</i>Agent</a></li>
                 <ul class="sub-nav1" id="sub-nav1">
                     <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'agt_reg') }}')">Agent Registration</a></li>
-                    <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'agt_list') }}')">Agent List</a></li>
-                    <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'pay_list') }}')">Agent Profile</a></li>
+                    <li><a href="javascript:void(0)" onclick="loadContent('{{ route('Agt_list') }}')">Agent List</a></li>
                 </ul>
 
             <li><a href="#sub-nav2" target="content_frame"><i class="material-icons">payments</i>Payments</a></li>

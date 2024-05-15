@@ -44,7 +44,9 @@
 <body>
     <div class="container">
         <h1>Add Additional Charges</h1>
-        <form id="additionalChargesForm">
+        <form id="additionalChargesForm" action="{{route('AgtReg_AdditionalChargers')}}" method="POST">
+            @csrf
+
             <label for="registrationFee">Registration Fee:</label>
             <input type="text" id="registrationFee" name="registrationFee">
 
@@ -57,12 +59,14 @@
             <label for="otherCharges">Other Charges:</label>
             <input type="text" id="otherCharges" name="otherCharges">
 
+            <input type="number" name="Agent_id" value="{{$Agent->id}}" style="display:none">
+
             <button type="submit">Submit</button>
         </form>
     </div>
 
     <script>
-        document.getElementById('additionalChargesForm').addEventListener('submit', function(event) {
+         document.getElementById('additionalChargesForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
             var registrationFee = parseFloat(document.getElementById('registrationFee').value) || 0;
@@ -72,7 +76,12 @@
 
             var totalCharges = registrationFee + governmentTax + handlingCharges + otherCharges;
 
-            alert('Total Charges: $' + totalCharges.toFixed(2));
+            var confirmation = confirm('Total Charges: $' + totalCharges.toFixed(2) + '. Are you sure you want to submit?');
+            
+            if (confirmation) {
+                
+                this.submit(); 
+            }
         });
     </script>
 </body>
