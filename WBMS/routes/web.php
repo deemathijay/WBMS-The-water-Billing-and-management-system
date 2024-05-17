@@ -7,6 +7,7 @@ use App\Http\Controllers\MeterMobile;
 use App\Http\Controllers\Payments;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginValidation;
+use App\Http\Controllers\MeterReader;
 use App\Http\Controllers\OrgLogin\OrgLoginValidation;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\welcome;
@@ -71,6 +72,10 @@ Route::get('/meter/loginValidate/BillHistory',[MeterMobile::class,'BillHistory']
 Route::get('/meter/loginValidate/PayHistory',[MeterMobile::class,'PayHistory'])->name('PayHistory');
 Route::get('/meter/loginValidate/Pricing',[MeterMobile::class,'Pricing'])->name('Pricing');
 
+///meter reader reg and admin interfaces
+Route::post('/MTRregistration',[MeterReader::class,'Registration'])->name('MTRRegistration');
+Route::get('/MTR_list',[MeterReader::class,'MTR_list'])->name('MTR_list');
 
 
-
+///pricing
+Route::get('/pricing', [PageController::class,'pricing'])->name('pricing');

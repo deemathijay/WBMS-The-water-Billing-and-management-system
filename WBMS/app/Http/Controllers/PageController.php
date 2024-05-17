@@ -29,8 +29,17 @@ class PageController extends Controller
                 return view('Admin.pages.addNewAcc');
             case 'Agt_list':
                 return view('Admin.pages.agt_list');
+            case 'AddMeterReader':
+                return view('Admin.pages.AddMeterReader');
+                
+
+
             default:
                 return abort(404); // Page not found
         }
+    }
+
+    public function pricing(){
+        return view ('Admin.pages.pricing');
     }
 }

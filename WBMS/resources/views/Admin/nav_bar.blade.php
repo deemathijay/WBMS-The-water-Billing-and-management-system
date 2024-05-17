@@ -31,14 +31,20 @@
                     <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'pay_list') }}')">Payment List</a></li>
                     <li><a href="http://">Payment Slips</a></li>
                 </ul>
-                <li><a href="#sub-nav3" target="content_frame"><i class="material-icons">currency_exchange</i>Reload</a></li>
+            <li><a href="#sub-nav5" target="content_frame">Meter Readers</a></li>
+            <ul class="sub-nav5" id="sub-nav5">
+                <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'AddMeterReader') }}')">Add Employee</a></li>
+                <li><a href="javascript:void(0)" onclick="loadContent('{{ route('MTR_list') }}')"> List</a></li>
+                {{-- <li><a href="http://">Payment Slips</a></li> --}}
+            </ul>
+            <li><a href="#sub-nav3" target="content_frame"><i class="material-icons">currency_exchange</i>Reload</a></li>
                     <ul class="sub-nav3" id="sub-nav3">
                         <li><a href="http://">Make Payment</a></li>
                         <li><a href="http://">Payment List</a></li>
                         <li><a href="http://">Payment Slips</a></li>
                     </ul>
             <li><a href="reload/reload_slip.html" target="content_frame"><i class="material-icons">request_quote</i>Income</a></li>
-            
+            <li><a href="javascript:void(0)" onclick="loadContent('{{ route('pricing') }}')">Pricing </a></li>
             
            
         </ul>
@@ -60,6 +66,10 @@
                 $('a[href="#sub-nav4"]').click(function(e) {
                     e.preventDefault(); 
                     $('.sub-nav4').toggle(); 
+                });
+                $('a[href="#sub-nav5"]').click(function(e) {
+                    e.preventDefault(); 
+                    $('.sub-nav5').toggle(); 
                 });
             });
             function loadContent(url) {
