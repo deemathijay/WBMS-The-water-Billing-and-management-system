@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\CusIdGenerator;
+use App\Models\Acc_Types;
 use App\Models\Cus_account;
 use App\Models\Cus_Installment;
 use App\Models\reg_fee;
@@ -100,6 +101,15 @@ class Cus_reg extends Controller
         $RegFee->Org_id=Session::get('Org_id');
         $RegFee->CusAcc_id=Session::get('CusAcc_id');
         $RegFee->save();
+
+        $type = new Acc_Types();
+        $type->Acc_id =Session::get('CusAcc_id');
+        $type->Type = $request->input('account_type');
+        $type->save();
+
+        $acc= Cus_account::findOrFail(Session::get('CusAcc_id'));
+        $acc->CusAcc_Remark=$request->input('Cus_Remark');
+        $acc->save();
 
         $cusAccNo= Session::get('CusAcc_id');
         $customerId=Session::get('cus_id');

@@ -26,4 +26,13 @@ class OrgLoginValidation extends Controller
             return view('welcome');
         }
     }
+
+    public function Logout(){
+        // Session::forget('Org_id');
+        return view('Admin.pages.Logout');
+    }
+    public function LogoutConfirm(){
+        Session::forget('Org_id');
+        return view('welcome');
+    }
 }

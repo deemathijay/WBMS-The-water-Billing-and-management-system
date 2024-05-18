@@ -86,9 +86,10 @@ Route::get('/pricing', [PageController::class,'pricing'])->name('pricing');
 ///adding meeter readings
 Route::get('/AddMeters',[AddMeter::class,'Search'])->name('MeterAddSearch');
 Route::post('/AddMeters/SerachForAddMeter',[AddMeter::class,'SearchUser'])->name('SerachForAddMeter');
-Route::post('/AddingMeterReading/{id}',[AddMeter::class,'AddingMeterReading'])->name('AddingMeterReading');
+Route::post('/AddMeters/SerachForAddMeter/AddingMeterReading',[AddMeter::class,'AddingMeterReading'])->name('AddingMeterReading');
 
 
-
-
+///logging out 
+Route::get('/logingout',[OrgLoginValidation::class,'Logout'])->name('Logoutpage');
+Route::get('/logingout/confirm',[OrgLoginValidation::class,'LogoutConfirm'])->name('LogoutConfirm');
 

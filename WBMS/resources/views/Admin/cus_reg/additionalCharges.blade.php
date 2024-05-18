@@ -56,16 +56,16 @@
             
             <label for="account_type">Choose the Account Type:</label>
                 <select name="account_type" id="account_type">
-                    <option value="Home">Home</option>
-                    <option value="Business">Business</option>
-                    <option value="Charity">Charity</option>
-                    <option value="Option 1">Option 1</option>
-                    <option value="Option 2">Option 2</option>
-                    <option value="Option 3">Option 3</option>
+                    <option value="A">Home</option>
+                    <option value="B">Business</option>
+                    <option value="C">Charity</option>
+                    <option value="D">Option 1</option>
+                    <option value="E">Option 2</option>
+                    {{-- <option value=" 3">Option 3</option> --}}
                 </select>
 
             <label for="">Remark (If Any Changes Ex: Address)</label>
-            <input type="text" name="Cus_Remark">
+            <input type="text" name="Cus_Remark" value="None">
 
             <label for="registrationFee">Registration Fee:</label>
             <input type="text" id="registrationFee" name="registrationFee">

@@ -15,8 +15,16 @@ class Cus_account extends Model
     }
 
     public function LastReading(){
-        return $this->hasOne(Acc_LastReading::class,'id');
+        return $this->hasOne(Acc_LastReading::class,'Acc_id');
     }
+
+    protected $fillable = [
+        'CusAcc_Remark',
+        'CusAcc_InstallmentStatus',
+        'CusAcc_Status',
+        'CusAcc_Balance'
+    ];
+
     // public function Installments()
     // {
     //     return $this->hasMany(Cus_Installment::class, 'id');

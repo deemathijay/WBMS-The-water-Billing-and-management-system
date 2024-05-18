@@ -35,6 +35,7 @@
             <ul class="sub-nav5" id="sub-nav5">
                 <li><a href="javascript:void(0)" onclick="loadContent('{{ route('page', 'AddMeterReader') }}')">Add Employee</a></li>
                 <li><a href="javascript:void(0)" onclick="loadContent('{{ route('MTR_list') }}')"> List</a></li>
+                <li><a href="javascript:void(0)" onclick="loadContent('{{ route('MeterAddSearch') }}')"> Lastest Meter Readings</a></li>
                 {{-- <li><a href="http://">Payment Slips</a></li> --}}
             </ul>
             <li><a href="#sub-nav3" target="content_frame"><i class="material-icons">currency_exchange</i>Reload</a></li>
@@ -45,9 +46,13 @@
                     </ul>
             <li><a href="reload/reload_slip.html" target="content_frame"><i class="material-icons">request_quote</i>Income</a></li>
             <li><a href="javascript:void(0)" onclick="loadContent('{{ route('pricing') }}')">Pricing </a></li>
+
+
             
-           
+           <li  style="bottom:10px ;position:absolute;width:100%;box-sizing:border-box;right:auto"> <a href="{{ route('Logoutpage') }}" style="padding-left:50px;">Log Out</a></li>
         </ul>
+
+       
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             $(document).ready(function() {

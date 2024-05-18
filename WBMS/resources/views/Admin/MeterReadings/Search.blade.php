@@ -116,15 +116,18 @@
                     <td>{{$customer->Cus_Address}}</td>
                     <td>{{$account->CusAcc_Remark}}</td>
                     <td >
-                        @if(isset($account->LastReading))
-                        {{ optional($account->LastReading)->LastReading }}
+                        @if(empty($account->LastReading))
+
+                        <form action="{{route('AddingMeterReading')}}" method="POST" style="display: inline">
+                            {{ csrf_field() }}
+                             <input type="text" class="input" name="LastMeter" required style="width: 15vw; display: inline">
+                             {{-- <input type="hidden" name="previous_url" value="{{ url()->current() }}"> --}}
+                             <input type="hidden" name="id" value="{{$account->id}}">
+                             <button type="submit" class="button">Enter</button>    
+                         </form>
+                        
                         @else
-                        <form action="{{route('AddingMeterReading',['id' => $account->id])}}" method="POST" style="display: inline">
-                           @csrf
-                            <input type="text" class="input" name="LastMeter" required style="width: 15vw; display: inline">
-                            <input type="hidden" name="previous_url" value="{{ url()->current() }}">
-                            <button type="submit" class="button">Enter</button>    
-                        </form>
+                            {{($account->LastReading)->LastReading }}
                        @endif
                     </td>
                 </tr>
