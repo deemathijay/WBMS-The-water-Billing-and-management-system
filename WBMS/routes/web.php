@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddAccount;
+use App\Http\Controllers\AddMeter;
 use App\Http\Controllers\Agt_reg;
 use App\Http\Controllers\Cus_reg;
 use App\Http\Controllers\MeterMobile;
@@ -79,3 +80,15 @@ Route::get('/MTR_list',[MeterReader::class,'MTR_list'])->name('MTR_list');
 
 ///pricing
 Route::get('/pricing', [PageController::class,'pricing'])->name('pricing');
+
+
+
+///adding meeter readings
+Route::get('/AddMeters',[AddMeter::class,'Search'])->name('MeterAddSearch');
+Route::post('/AddMeters/SerachForAddMeter',[AddMeter::class,'SearchUser'])->name('SerachForAddMeter');
+Route::post('/AddingMeterReading/{id}',[AddMeter::class,'AddingMeterReading'])->name('AddingMeterReading');
+
+
+
+
+
