@@ -110,16 +110,55 @@
             <h1>WBMS</h1>
             <h4>Meter Reading Portal</h4>
         </div>
-        <form action="{{route('loginValidate')}}" method="POST">
+       
+      <form id="loginForm" action="{{route('MeterloginValidate')}}" method="POST">
             @csrf
         <div class="log">
-            <input type="text" placeholder="User Name">
-            <input type="password" placeholder="Password">
+          <input type="text" id="username" name="username" required placeholder="User Name">
+            <input type="password" id="password" placeholder="Password" name="PWD">
+
+           <p id="errorMessage" style="color: red; display: none;"></p>
+           @if (session('error'))
+           <div style="color: red;">
+               {{ session('error') }}
+           </div>
+       @endif
         </div>
 
         <button type="submit">LOGIN</button>
         </form>
         <p>Any Issue? <a href="#">Contact Us</a></p>
     </div>
+
+
+
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          const loginForm = document.getElementById("loginForm");
+          const usernameInput = document.getElementById("username");
+          const errorMessage = document.getElementById("errorMessage");
+
+          function containsSQLInjection(value) {
+              const sqlInjectionPatterns = [
+                  /(\b)(SELECT|INSERT|UPDATE|DELETE|DROP|UNION|CREATE|ALTER|TRUNCATE|EXEC)(\b)/i, 
+                  /(\b)(AND|OR)(\b)/i, 
+                  /['"=;]/ 
+              ];
+
+              return sqlInjectionPatterns.some(pattern => pattern.test(value));
+          }
+
+          loginForm.addEventListener("submit", function(event) {
+              const username = usernameInput.value;
+              if (containsSQLInjection(username)) {
+                  event.preventDefault();
+                  errorMessage.textContent = "Invalid username: Potential SQL injection detected.";
+                  errorMessage.style.display = "block";
+              } else {
+                  errorMessage.style.display = "none";
+              }
+          });
+      });
+  </script>
 </body>
 </html>

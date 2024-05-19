@@ -90,7 +90,7 @@
         <h1>Search Account</h1>
         <form method="post" action="{{route('SerachForAddMeter')}}">
             {{ csrf_field() }}
-            <input type="text" name="searchInput" placeholder="Enter Account Number or NIC Number" class="input" required>
+            <input type="text" name="searchInput" placeholder="Enter Customer ID or NIC Number" class="input" required>
             <button type="submit"  name="search" class="button"><b>Search</b></button>
         </form>
         <div class="details">

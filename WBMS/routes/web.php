@@ -5,6 +5,7 @@ use App\Http\Controllers\AddMeter;
 use App\Http\Controllers\Agt_reg;
 use App\Http\Controllers\Cus_reg;
 use App\Http\Controllers\MeterMobile;
+use App\Http\Controllers\MeterReadingApp;
 use App\Http\Controllers\Payments;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginValidation;
@@ -67,11 +68,16 @@ Route::post('/paySearch',[Payments::class,'Search'])->name('SearchPay');
 
 ////meter mobile app
 Route::get('/meter',[MeterMobile::class,'View'])->name('meterlogin');
-Route::post('/meter/loginValidate',[MeterMobile::class,'loginValidate'])->name('loginValidate');
+Route::post('/meter/loginValidate',[MeterMobile::class,'loginValidate'])->name('MeterloginValidate');
 Route::get('/meter/loginValidate/Calculatebill',[MeterMobile::class,'Calculatebill'])->name('Calculatebill');
 Route::get('/meter/loginValidate/BillHistory',[MeterMobile::class,'BillHistory'])->name('BillHistory');
 Route::get('/meter/loginValidate/PayHistory',[MeterMobile::class,'PayHistory'])->name('PayHistory');
 Route::get('/meter/loginValidate/Pricing',[MeterMobile::class,'Pricing'])->name('Pricing');
+Route::post('/meter/loginValidate/Calculatebill/SearchUserForBilling',[MeterReadingApp::class,'SearchUser'])->name('SearchUserForBilling');
+Route::get('/meter/loginValidate/Calculatebill/SearchUserForBilling/MeterReadingCalculations/{id}',[MeterReadingApp::class,'Calculations'])->name('MeterReadingCalculations');
+Route::get('/meter/loginValidate/Calculatebill/SearchUserForBilling/doCalculations',[MeterReadingApp::class,'doCalculations'])->name('MeterReadingdoCalculations');
+
+
 
 ///meter reader reg and admin interfaces
 Route::post('/MTRregistration',[MeterReader::class,'Registration'])->name('MTRRegistration');
